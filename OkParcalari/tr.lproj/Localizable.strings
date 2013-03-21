@@ -1,0 +1,85 @@
+/* 
+  Localizable.strings
+  OkParcalari
+
+  Created by Yunus Eren Guzel on 12/24/12.
+
+*/
+
+
+"IMAGE_FILENAME_SUFFIX" = "tr";
+"NEW_GAME" = "Yeni Oyun";
+"CURRENCY" = "TL";
+"TAP_TO_START" = "Başlamak için dokunun";
+"COULD_NOT_MAKE_PURCHASES" = "Tam sürümü edinebilmek için Ayarlar uygulamasından Uygulama İçi Alım seçeneğini etkinleştirmeniz gerekmektedir.";
+"IN_APP_PURCHASES" = "Uygulama İçi Alım";
+"OK" = "Tamam";
+"CONNECTION_ERROR" = "Bağlantı hatası oluştu. Lütfen daha sonra tekrar deneyin.";
+"SERVER_ERROR" = "iTunes Store ile ilgili bir hata oluştu. Lütfen daha sonra tekrar deneyin.";
+"PRODUCT_PURCHASED" = "Tam sürüme başarıyla geçildi. İyi oyunlar!";
+"PRODUCT_PURCHASE_FAILED" = "Hata: ";
+"TAP_TO_CLOSE" = "Kapatmak için dokunun";
+"RESTART_APPROVE" = "Yeniden başlamak istediğinize emin misiniz? Kaydedilmemiş ilerlemeniz kaybolacaktır!";
+"MAIN_MENU_APPROVE" = "Ana menüye dönmek istediğinize emin misiniz? Kaydedilmemiş ilerlemeniz kaybolacaktır!";
+"CANCEL" = "İptal";
+"NO_PURCHASED" = "Ücretiz haritaların sonuncusunu oynadınız. Tam sürüme geçerek bütün haritalara ulaşabilirsiniz.";
+
+// Credits
+"PROGRAMMING"="PROGRAMLAMA";
+"ART"="GÖRSEL ARAYÜZ TASARIM";
+"MUSIC"="MÜZİK";
+
+// Social
+"FACEBOOK_SESSION_NOT_OPEN_TITLE" = "Hata";
+"FACEBOOK_SESSION_NOT_OPEN" = "Facebook'a bağlı değilsiniz ya da Green The Garden Facebook'a ileti yollama yetkisine sahip değil.";
+"FACEBOOK_SHARE_CAPTION" = "Beni geçebilir misin?";
+"FACEBOOK_MESSAGE_NO_STAR" = "%@ bir haritayi %d saniyede çözdüm.";
+"FACEBOOK_MESSAGE_WITH_STARS" = "%@ bir haritayi %d saniyede %@ yıldız ile çözdüm.";
+
+"TWEET_MESSAGE_NO_STAR" = "#GreenTheGarden'da %@ bir haritayi %d saniyede çözdüm.";
+"TWEET_MESSAGE_WITH_STARS" = "#GreenTheGarden'da %@ bir haritayi %d saniyede %@ yıldız ile çözdüm.";
+"TWEET_1_STAR" = "1";
+"TWEET_2_STAR" = "2";
+"TWEET_3_STAR" = "3";
+"TWEET_MAP_EASY" = "kolay";
+"TWEET_MAP_NORMAL" = "orta";
+"TWEET_MAP_HARD" = "zor";
+"TWEET_MAP_INSANE" = "çılgın";
+
+"TWEET_SENT" = "Tweetiniz başarıyla yollandı.";
+
+//Tutorial
+
+"TUTORIAL_WELCOME" = "Hoş geldiniz. Oyundaki göreviniz bahçedeki karelerin tümünü yeşillendirmektir. Bunun için pompalardan çıkan boruları kullanacaksınız.";
+"TUTORIAL_COMPLETED" = "Bundan sonra bahçeyi tek başınıza yeşillendireceksiniz. Unutmayın, oyunu kazanmak için her bir kareyi yeşillendirmeniz lazım.\nİyi Eğlenceler.";
+
+"TUTORIAL_ALERT_TITLE" = "Yardım Turu";
+"TUTORIAL_ALERT_MESSAGE" = "Oyunun nasıl oynanacağını anlatan yardım turunu görmek ister misiniz?";
+"TUTORIAL_ALERT_OK_BUTTON" = "Evet";
+"TUTORIAL_ALERT_CANCEL_BUTTON" = "Hayır";
+
+"TUTORIAL_1_0" = "Bu bir su pompası; her su pompasının farklı bir basınç değeri bulunmaktadır.";
+"TUTORIAL_1_1" = "Bu su pompası 9 kareyi sulayacak basınca sahiptir.";
+"TUTORIAL_1_2" = "Boruları pompalardan sadece düz doğrular şeklinde çıkartabilirsiniz.";
+"TUTORIAL_1_3" = "Şimdi, bu pompadan boruyu yukarı doğru 9 kare çıkartın.";
+
+"TUTORIAL_2_0" = "Buraya erşilebilen sadece bir pompa bulunmaktadır.";
+"TUTORIAL_2_1" = "Haydi, o pompayı kullanalım.";
+"TUTORIAL_2_2" = "Şimdi boruyu buradan aşağı doğru çıkartın.";
+
+"TUTORIAL_3_0" = "Aynısı bu kare için de geçerli.";
+
+"TUTORIAL_4_0" = "";
+
+"TUTORIAL_5_0" = "Bu pompa 6 kare sulayabilir.";
+"TUTORIAL_5_1" = "Pompanın sağına doğru 2, altına doğru ise 7 karelik boşluk bulunmaktadır.";
+"TUTORIAL_5_2" = "Eğer bu pompa sağındaki iki kareyi sulasa bile hala aşağı doğru sulayacak 4 karelik gücü kalır.";
+"TUTORIAL_5_3" = "Demek ki, bu pompa aşağı doğru 4 kareyi kesinlikle sulayacaktır.";
+"TUTORIAL_5_4" = "Şimdi 4 karelik alanı sulayın.";
+
+// Rate Us
+"RATE_US_TITLE" = "Bizi Oylayın!";
+"RATE_US_MESSAGE" = "Green the Garden'ı beğendiyseniz bizi App Store'da oylayabilirsiniz.";
+"RATE_US_RATE" = "Şimdi oyla";
+"RATE_US_LATER" = "Daha sonra";
+"RATE_US_DONT_SHOW_AGAIN" = "Bir daha gösterme";

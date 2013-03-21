@@ -1,0 +1,85 @@
+/* 
+  Localizable.strings
+  OkParcalari
+
+  Created by Yunus Eren Guzel on 12/24/12.
+
+*/
+
+"IMAGE_FILENAME_SUFFIX" = "en";
+"NEW_GAME" = "New Game";
+"CURRENCY" = "USD";
+"TAP_TO_START" = "Tap to start";
+"COULD_NOT_MAKE_PURCHASES" = "You need to enable In-App Purchases in the Settings application in order to unlock the full game.";
+"IN_APP_PURCHASES" = "In-App Purchases";
+"OK" = "OK";
+"CONNECTION_ERROR" = "There seems to be a connection error. Please try again later.";
+"SERVER_ERROR" = "There seems to be an error with the iTunes Store. Please try again later.";
+"PRODUCT_PURCHASED" = "You have successfully unlocked the full game. Enjoy!";
+"PRODUCT_PURCHASE_FAILED" = "Error: ";
+"TAP_TO_CLOSE" = "Tap to close";
+"RESTART_APPROVE" = "Are you sure want to restart the game? Your unsaved progress will be lost!";
+"MAIN_MENU_APPROVE" = "Are you sure want to return to main menu? Your unsaved progress will be lost!";
+"CANCEL" = "Cancel";
+"NO_PURCHASED" = "This was the last level in the free level pack. You can unlock the full game to access all the levels.";
+
+// Credits
+"PROGRAMMING"="PROGRAMMING";
+"ART"="GUI DESIGN";
+"MUSIC"="MUSIC";
+
+// Social
+"FACEBOOK_SESSION_NOT_OPEN_TITLE" = "Error";
+"FACEBOOK_SESSION_NOT_OPEN" = "You're not connected to Facebook or GreenTheGarden does not have the privilages to send Facebook updates.";
+"FACEBOOK_SHARE_CAPTION" = "Can you beat me?";
+"FACEBOOK_MESSAGE_NO_STAR" = "I solved %@ map in %d seconds.";
+"FACEBOOK_MESSAGE_WITH_STARS" = "I solved %@ map in %d seconds with %@.";
+
+"TWEET_MESSAGE_NO_STAR" = "I solved %@ map in %d seconds in #GreenTheGarden.";
+"TWEET_MESSAGE_WITH_STARS" = "I solved %@ map in %d seconds with %@ in #GreenTheGarden.";
+"TWEET_1_STAR" = "1 star";
+"TWEET_2_STAR" = "2 stars";
+"TWEET_3_STAR" = "3 stars";
+"TWEET_MAP_EASY" = "an easy";
+"TWEET_MAP_NORMAL" = "a normal";
+"TWEET_MAP_HARD" = "a hard";
+"TWEET_MAP_INSANE" = "an insane";
+
+"TWEET_SENT" = "Your tweet has been successfully sent.";
+
+//Tutorial
+
+"TUTORIAL_WELCOME" = "Welcome to Green The Garden. Your objective is to green the whole garden! You will use water pumps and pipes in your quest.";
+"TUTORIAL_COMPLETED" = "Now you're on your own. Go and Green The Garden! Remember, you have to green each and every tile in order to win the game!";
+
+"TUTORIAL_ALERT_TITLE" = "Tutorial";
+"TUTORIAL_ALERT_MESSAGE" = "Do you want to see the tutorial on how to play Green the Garden?";
+"TUTORIAL_ALERT_OK_BUTTON" = "Yes";
+"TUTORIAL_ALERT_CANCEL_BUTTON" = "Skip Tutorial";
+
+
+"TUTORIAL_1_0" = "This is a water pump. Water pumps have varying water pressures";
+"TUTORIAL_1_1" = "This pump can water 9 tiles";
+"TUTORIAL_1_2" = "You can only have straight pipes emanating from the water pumps.";
+"TUTORIAL_1_3" = "Go on and water 9 tiles by dragging upwards from this pump.";
+
+"TUTORIAL_2_0" = "There’s only one water pump which can reach this tile.";
+"TUTORIAL_2_1" = "So, let’s use that pump.";
+"TUTORIAL_2_2" = "Go on and water the tile below by dragging from here.";
+
+"TUTORIAL_3_0" = "The same is true for this tile too.";
+
+"TUTORIAL_4_0" = "";
+
+"TUTORIAL_5_0" = "This pump can water 6 tiles.";
+"TUTORIAL_5_1" = "It has 2 empty tiles to its right and 7 empty tiles below itself.";
+"TUTORIAL_5_2" = "Even if it is used to water both of the tiles to its right it will still have power to water 4 tiles below.";
+"TUTORIAL_5_3" = "So, it is certain that this pump will be watering at least 4 tiles below itself.";
+"TUTORIAL_5_4" = "Use it to water 4 tiles.";
+
+// Rate Us
+"RATE_US_TITLE" = "Rate Us!";
+"RATE_US_MESSAGE" = "If you enjoy playing Green the Garden, you can rate us on the App Store.";
+"RATE_US_RATE" = "Rate now";
+"RATE_US_LATER" = "Remind later";
+"RATE_US_DONT_SHOW_AGAIN" = "Don't show again";
