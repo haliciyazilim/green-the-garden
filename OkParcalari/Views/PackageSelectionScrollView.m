@@ -7,25 +7,89 @@
 //
 
 #import "PackageSelectionScrollView.h"
+#import "Map.h"
 
 @implementation PackageSelectionScrollView
-
-- (id)initWithFrame:(CGRect)frame
 {
-    self = [super initWithFrame:frame];
+    int rowCount;
+    CGFloat contentPadding;
+    CGSize buttonSize;
+    CGSize unitSize;
+    CGFloat topMargin;
+
+}
+- (id)init
+{
+    self = [super init];
     if (self) {
-        // Initialization code
+        buttonSize = CGSizeMake(260.0, 175.0);
+        unitSize = CGSizeMake(280.0, 195.0);
+        topMargin = 26.0;
+        contentPadding = 400.0;
+        rowCount = 2;
+        [self setShowsHorizontalScrollIndicator:NO];
+        [self setShowsVerticalScrollIndicator:NO];
     }
     return self;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
+- (UIButton*) buttonForMapPack:(MapPackage*)package atIndex:(int)index
 {
-    // Drawing code
-}
-*/
+    UIButton* button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.tag = package.packageId;
 
+    button.frame = CGRectMake(
+                            (index/rowCount)*unitSize.width + (unitSize.width*0.5*(index%rowCount))+contentPadding+(index>=12?unitSize.width*0.5:0),
+                            (index%rowCount)*unitSize.height,
+                            buttonSize.width,
+                            buttonSize.height);
+    
+    if([package isPurchased] || [[package name] isEqualToString:STANDART_PACKAGE]){
+        [button addTarget:self action:@selector(openMapsFor:) forControlEvents:UIControlEventTouchUpInside];
+    }else{
+        [button addTarget:self action:@selector(openStoreFor:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    [button setBackgroundColor:[UIColor redColor]];
+    return button;
+
+}
+
+- (void) loadButtons
+{
+    int index=0;
+    
+    NSArray* packages = [MapPackage allPackages];
+    
+    for(MapPackage* package in packages){
+        UIButton* button = [self buttonForMapPack:package atIndex:index];
+        [self addSubview:button];
+        index++;
+    }
+    
+    [self setContentSize:CGSizeMake(unitSize.width*ceil((float)packages.count/(float)rowCount)+unitSize.width*0.5+contentPadding*2.0, unitSize.height*rowCount)];
+    
+}
+
+- (void)refreshScrollView
+{
+    for (UIView* view in self.subviews) {
+        if([view isKindOfClass:[UIButton class]]){
+            [view removeFromSuperview];
+        }
+
+    }
+    
+    [self loadButtons];
+}
+
+- (void) openStoreFor:(UIButton*)button
+{
+    NSLog(@"open store for %d",button.tag);
+}
+
+- (void) openMapsFor:(UIButton*)button
+{
+    
+    NSLog(@"open maps for %d",button.tag);
+}
 @end

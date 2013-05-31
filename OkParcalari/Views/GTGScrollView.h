@@ -10,4 +10,6 @@
 
 @interface GTGScrollView : UIScrollView
 
+- (void) refreshScrollView;
+
 @end

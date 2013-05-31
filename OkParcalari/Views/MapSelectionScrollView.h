@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Map.h"
+#import "GTGScrollView.h"
 
-@interface MapSelectionScrollView : UIScrollView
+@interface MapSelectionScrollView : GTGScrollView
+
+- (id) initWithMapPackage:(MapPackage*) mapPackage;
+
 
 @end
