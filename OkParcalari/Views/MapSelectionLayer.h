@@ -15,13 +15,23 @@
 #import "Reachability.h"
 
 
+typedef enum SELECTION_TYPE {
+    MAP, MAP_PACKAGE
+} SELECTION_TYPE;
+
 @interface MapSelectionLayer : CCLayer <GKGameCenterControllerDelegate>
 {
     
 }
 
 @property (strong, nonatomic) Reachability *reachability;
+@property (nonatomic) SELECTION_TYPE selectionType;
 
-+(CCScene *) scene;
++ (CCScene *) scene;
+
+- (void) showPackage:(MapPackage*)mapPackage;
+
++ (void) setLastScroll:(int)scroll;
++ (int)  getLastScroll;
 
 @end

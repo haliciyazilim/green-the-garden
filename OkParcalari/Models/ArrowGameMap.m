@@ -54,6 +54,17 @@
         [[NSUserDefaults standardUserDefaults] synchronize];
         [[DatabaseManager sharedInstance] updateMaps];
     }
+    
+    if([versionNumber intValue] == 110){
+        
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:120] forKey:@"version_number"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        [[DatabaseManager sharedInstance] updateMaps];
+        
+        [self migrateGameUnlock];
+        
+    }
+    
     return [[DatabaseManager sharedInstance] getMapsForPackage:fileName];
 }
 
@@ -93,6 +104,12 @@
     }
     
     return gameMap;
+    
+}
+
+#pragma mark Alperen dolduracak
++ (void) migrateGameUnlock
+{
     
 }
 

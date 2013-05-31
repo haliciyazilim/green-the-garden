@@ -7,10 +7,49 @@
 //
 
 #import "Map.h"
-
+#import "DatabaseManager.h"
 
 @implementation MapPackage
 
++ (NSArray*)allPackages
+{
+    NSArray* packages;
+    packages =@[
+                [MapPackage packageWithId:10000 andName:STANDART_PACKAGE],
+                [MapPackage packageWithId:11000 andName:EASY_PACKAGE],
+                [MapPackage packageWithId:12000 andName:NORMAL_PACKAGE],
+                [MapPackage packageWithId:13000 andName:HARD_PACKAGE],
+                [MapPackage packageWithId:14000 andName:INSANE_PACKAGE]];
+    return packages;
+}
+
++ (MapPackage*) packageWithId:(int)packageId andName:(NSString*)name
+{
+    MapPackage* package = [[MapPackage alloc] init];
+    package.name = name;
+    package.packageId = packageId;
+    return package;
+}
+
+- (NSArray *) maps
+{
+    if(_maps == nil){
+        _maps = [[DatabaseManager sharedInstance] getMapsForPackage:self.name];
+    }
+    return _maps;
+}
+
+#pragma mark Alperen dolduracak
+- (BOOL)isPurchased
+{
+    return NO;
+}
+
+#pragma mark Alperen doldruacak
+- (void)purchasePackage
+{
+    
+}
 @end
 
 @implementation Map
