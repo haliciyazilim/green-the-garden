@@ -31,7 +31,6 @@ static MapSelectionLayer* lastInstance;
     UIImageView *maskView;
     UIImageView *logoView;
     NSString* packageFileName;
-    UIButton *unlockButton;
     MapPackage* currentMapPackage;
     UIViewController * tempVC;
     BOOL shouldCancel;
@@ -118,15 +117,6 @@ static MapSelectionLayer* lastInstance;
         [barView addSubview:musicButton];
         [barView addSubview:gameCenterButton];
         
-        if(![[GreenTheGardenIAPHelper sharedInstance] isPro]){
-            unlockButton = [[UIButton alloc] initWithFrame:CGRectMake(783.0, 17.0, 150.0, 28.0)];
-            [unlockButton setBackgroundImage:[UIImage imageNamed:LocalizedImageName(@"map_barbtn_unlock", @"png")] forState:UIControlStateNormal];
-            [unlockButton setBackgroundImage:[UIImage imageNamed:LocalizedImageName(@"map_barbtn_unlock_hover", @"png")] forState:UIControlStateHighlighted];
-            [unlockButton addTarget:self action:@selector(addStore) forControlEvents:UIControlEventTouchUpInside];
-            [barView addSubview:unlockButton];
-        }
-
-        
         [[[CCDirector sharedDirector] view] addSubview:maskView];
         [[[CCDirector sharedDirector] view] addSubview:logoView];
         [[[CCDirector sharedDirector] view] addSubview:scrollView];
@@ -190,7 +180,25 @@ static MapSelectionLayer* lastInstance;
 
 - (void) openStoreForPackage:(MapPackage*)package
 {
-    #pragma mark Alperen GAVUN
+    #pragma mark Alperen KAVUN
+    
+    if(!self.reachability){
+        self.reachability = [Reachability reachabilityForInternetConnection];
+    }
+    NetworkStatus netStatus = [self.reachability currentReachabilityStatus];
+    if(netStatus == NotReachable){
+        UIAlertView *noConnection = [[UIAlertView alloc] initWithTitle:@""
+                                                               message:NSLocalizedString(@"CONNECTION_ERROR", nil)
+                                                              delegate:self
+                                                     cancelButtonTitle:NSLocalizedString(@"OK", nil)
+                                                     otherButtonTitles:nil,nil];
+        [noConnection show];
+    }
+    else{
+        [[GreenTheGardenIAPHelper sharedInstance] setCallerLayer:self];
+        [[GreenTheGardenIAPHelper sharedInstance] createStoreForProduct:package.inAppId];
+    }
+    // done
 }
 
 - (void) setPackage:(NSString*)package
@@ -199,28 +207,8 @@ static MapSelectionLayer* lastInstance;
 }
 
 - (void)productPurchased:(NSNotification *)notification {
-    [unlockButton removeFromSuperview];
     [[DatabaseManager sharedInstance] updateMaps];
     [scrollView refreshScrollView];
-}
--(void)addStore {
-    if(!self.reachability){
-        self.reachability = [Reachability reachabilityForInternetConnection];
-    }
-    NetworkStatus netStatus = [self.reachability currentReachabilityStatus];
-    if(netStatus == NotReachable){
-        UIAlertView *noConnection = [[UIAlertView alloc] initWithTitle:@""
-                                                                      message:NSLocalizedString(@"CONNECTION_ERROR", nil)
-                                                                     delegate:self
-                                                            cancelButtonTitle:NSLocalizedString(@"OK", nil)
-                                                            otherButtonTitles:nil,nil];
-        [noConnection show];
-    }
-    else{
-        [[GreenTheGardenIAPHelper sharedInstance] setCallerLayer:self];
-        [[GreenTheGardenIAPHelper sharedInstance] createStore];
-    }
-    
 }
 - (void)fxClicked:(UIButton *)button {
     if([[GreenTheGardenSoundManager sharedSoundManager] isEffectsMuted]){

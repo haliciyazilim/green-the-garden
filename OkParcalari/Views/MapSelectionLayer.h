@@ -33,7 +33,7 @@ typedef enum SELECTION_TYPE {
 
 - (void) showPackage:(MapPackage*)mapPackage;
 
-- (void)openGameForMap:(Map*)map;
+- (void) openGameForMap:(Map*)map;
 
 - (void) openStoreForPackage:(MapPackage*)package;
 
