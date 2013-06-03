@@ -20,6 +20,7 @@
     UIImage* passiveStar;
     UIImage* activeStar;
     MapPackage* currentMapPackage;
+    NSArray* maps;
 }
 - (id)initWithMapPackage:(MapPackage *)mapPackage
 {
@@ -31,13 +32,14 @@
         rowCount = 3;
         passiveStar = [UIImage imageNamed:@"level_star_passive.png"];
         activeStar  = [UIImage imageNamed:@"level_star_active.png"];
+        [self loadMapIcons];
     }
     return self;
 }
 
 - (void) loadMapIcons
 {
-    NSArray* maps;
+    
     maps = [ArrowGameMap loadMapsFromFile:currentMapPackage.name];
     
     [self setContentSize:CGSizeMake(unitSize.width*ceil((float)maps.count/(float)rowCount)+unitSize.width*0.5+contentPadding*2.0, unitSize.height*rowCount)];
@@ -47,10 +49,8 @@
         [self buttonForMap:map atIndex:index];
         index++;
     }
-    
-    [self setContentOffset:CGPointMake([MapSelectionLayer getLastScroll], 0.0)];
-    
-    
+    [self setContentOffset:CGPointMake(-self.frame.size.width, 0.0) animated:NO];
+    [self setContentOffset:CGPointMake(0.0, 0.0) animated:YES];
 }
 
 - (UIButton*) buttonForMap:(Map*)map atIndex:(int)index
@@ -125,10 +125,32 @@
             [view removeFromSuperview];
         }
     }
-    
     [self loadMapIcons];
+}
+
+- (void) openGameFor:(UIButton*)button
+{
+    Map* selectedMap;
+    for(Map* map in maps){
+        if([map.mapId intValue] == button.tag){
+            selectedMap = map;
+        }
+    }
     
-    
+    if(selectedMap == nil){
+        return;
+    }
+    if([selectedMap isPurchased] == NO){
+        [self openStore];
+    }
+    else{
+        [[MapSelectionLayer lastInstance] openGameForMap:selectedMap];
+    }
+}
+
+- (void) openStore
+{
+    [[MapSelectionLayer lastInstance] openStoreForPackage:currentMapPackage];
 }
 
 @end

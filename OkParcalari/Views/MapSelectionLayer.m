@@ -21,6 +21,8 @@
 #import "MapSelectionScrollView.h"
 #import "PackageSelectionScrollView.h"
 
+static MapSelectionLayer* lastInstance;
+
 @implementation MapSelectionLayer
 {
     GTGScrollView* scrollView;
@@ -49,10 +51,14 @@
 	// return the scene
 	return scene;
 }
-
++ (MapSelectionLayer *)lastInstance
+{
+    return lastInstance;
+}
 -(id) init
 {
     if(self = [super init]){
+        lastInstance = self;
         packageFileName = @"standart";
         //        CGSize size = [[CCDirector sharedDirector] winSize];
         
@@ -131,9 +137,14 @@
     return self;
 }
 
--(void)showPackage:(MapPackage *)mapPackage
+-(void)showPackage:(MapPackage *)package
 {
-    
+    [scrollView removeFromSuperview];
+    scrollView = [[MapSelectionScrollView alloc] initWithMapPackage:package];
+    [[[CCDirector sharedDirector] view] addSubview:scrollView];
+    [scrollView setFrame:CGRectMake(0.0, 300.0, 1024.0, 400.0)];
+    [[[CCDirector sharedDirector] view] addSubview:leafView];
+    [[[CCDirector sharedDirector] view] addSubview:barView];
 }
 
 
@@ -160,13 +171,13 @@
     [button setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"level_bg_selected.png"]]];
 }
 
--(void)onClick:(UIButton*)button
+-(void)openGameForMap:(Map*)map
 {
 
     self.isTouchEnabled = NO;
     [[TransitionManager sharedInstance] makeTransitionWithBlock:^{
         [MapSelectionLayer setLastScroll:scrollView.contentOffset.x];
-        [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:0.0 scene:[ArrowGameLayer sceneWithFile:[NSString stringWithFormat:@"%d",button.tag]] withColor:ccWHITE]];
+        [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:0.0 scene:[ArrowGameLayer sceneWithFile:map.mapId] withColor:ccWHITE]];
         [scrollView removeFromSuperview];
         [maskView removeFromSuperview];
         [leafView removeFromSuperview];
@@ -175,6 +186,11 @@
         [self removeFromParentAndCleanup:YES];
 
     }];
+}
+
+- (void) openStoreForPackage:(MapPackage*)package
+{
+    #pragma mark Alperen GAVUN
 }
 
 - (void) setPackage:(NSString*)package
@@ -245,7 +261,6 @@
         [noConnection show];
     }
     else{
-//        NSLog(@"show GameCenter");
         tempVC = [[UIViewController alloc] init];
         GKGameCenterViewController *gameCenterController = [[GKGameCenterViewController alloc] init];
         if (gameCenterController != nil){

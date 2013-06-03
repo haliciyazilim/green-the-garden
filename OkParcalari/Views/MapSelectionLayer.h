@@ -29,9 +29,16 @@ typedef enum SELECTION_TYPE {
 
 + (CCScene *) scene;
 
++ (MapSelectionLayer*) lastInstance;
+
 - (void) showPackage:(MapPackage*)mapPackage;
 
+- (void)openGameForMap:(Map*)map;
+
+- (void) openStoreForPackage:(MapPackage*)package;
+
 + (void) setLastScroll:(int)scroll;
+
 + (int)  getLastScroll;
 
 @end

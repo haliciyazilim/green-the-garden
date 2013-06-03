@@ -8,6 +8,7 @@
 
 #import "PackageSelectionScrollView.h"
 #import "Map.h"
+#import "MapSelectionLayer.h"
 
 @implementation PackageSelectionScrollView
 {
@@ -76,7 +77,6 @@
         if([view isKindOfClass:[UIButton class]]){
             [view removeFromSuperview];
         }
-
     }
     
     [self loadButtons];
@@ -84,12 +84,21 @@
 
 - (void) openStoreFor:(UIButton*)button
 {
-    NSLog(@"open store for %d",button.tag);
+    for(MapPackage* package in [MapPackage allPackages]){
+        if(package.packageId == button.tag){
+            [[MapSelectionLayer lastInstance] openStoreForPackage:package];
+        }
+    }
 }
 
 - (void) openMapsFor:(UIButton*)button
 {
-    
-    NSLog(@"open maps for %d",button.tag);
+    for(MapPackage* package in [MapPackage allPackages]){
+        if(package.packageId == button.tag){
+            [[MapSelectionLayer lastInstance] showPackage:package];
+        }
+    }
 }
+
+
 @end
