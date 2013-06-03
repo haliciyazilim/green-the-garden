@@ -18,12 +18,23 @@ typedef enum MAP_DIFFICULTY {
 MAP_DIFFICULTY difficultyFromString(NSString* string);
 NSString* stringOfDifficulty(MAP_DIFFICULTY difficulty);
 
+#define STANDART_PACKAGE @"standart"
+#define EASY_PACKAGE @"easy"
+#define NORMAL_PACKAGE @"normal"
+#define HARD_PACKAGE @"hard"
+#define INSANE_PACKAGE @"insane"
+
 
 @interface MapPackage : NSObject 
 
++ (NSArray*)allPackages;
+
 @property NSString* name;
 @property int packageId;
-@property NSArray* maps;
+@property (nonatomic) NSArray* maps;
+
+- (void) purchasePackage;
+- (BOOL) isPurchased;
 
 @end
 

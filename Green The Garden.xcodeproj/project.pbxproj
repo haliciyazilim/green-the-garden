@@ -1145,6 +1145,7 @@
 		AE3BD4C816B12FAC000466C6 /* map_normal_mask.png in Resources */ = {isa = PBXBuildFile; fileRef = AE3BD4B816B12FAC000466C6 /* map_normal_mask.png */; };
 		AE3BD4C916B12FAC000466C6 /* map_normal_mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AE3BD4B916B12FAC000466C6 /* map_normal_mask@2x.png */; };
 		AE4D84D216AEEB8800F3C097 /* move.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AE4D84D116AEEB8800F3C097 /* move.mp3 */; };
+		AE521E081754CA31000C3974 /* InfoScreenView.m in Sources */ = {isa = PBXBuildFile; fileRef = AE521E071754CA31000C3974 /* InfoScreenView.m */; };
 		AE74542416A4351700D0AF37 /* level_star_passive.png in Resources */ = {isa = PBXBuildFile; fileRef = AE74542016A4351600D0AF37 /* level_star_passive.png */; };
 		AE74542516A4351700D0AF37 /* level_star_passive@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AE74542116A4351600D0AF37 /* level_star_passive@2x.png */; };
 		AE74542816A435C900D0AF37 /* level_star_active.png in Resources */ = {isa = PBXBuildFile; fileRef = AE74542616A435C900D0AF37 /* level_star_active.png */; };
@@ -1154,6 +1155,9 @@
 		AE9CD0E81694695000C42824 /* GameHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9CD0E71694695000C42824 /* GameHistory.m */; };
 		AE9CD0EB16946E2000C42824 /* game_history.json in Resources */ = {isa = PBXBuildFile; fileRef = AE9CD0EA16946E2000C42824 /* game_history.json */; };
 		AEB8D28B16A456D000262CF5 /* SoundManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AEB8D28A16A456D000262CF5 /* SoundManager.m */; };
+		AEC3942917588C8D00919F3A /* MapSelectionScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC3942817588C8D00919F3A /* MapSelectionScrollView.m */; };
+		AEC3942C17588FC600919F3A /* GTGScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC3942B17588FC600919F3A /* GTGScrollView.m */; };
+		AEC3942F1758971700919F3A /* PackageSelectionScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC3942E1758971600919F3A /* PackageSelectionScrollView.m */; };
 		AED218AA16BA6C0000271930 /* tut_highlight.png in Resources */ = {isa = PBXBuildFile; fileRef = AED218A816BA6C0000271930 /* tut_highlight.png */; };
 		AED218AB16BA6C0000271930 /* tut_highlight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AED218A916BA6C0000271930 /* tut_highlight@2x.png */; };
 		AEDCE5C016D7D19F00C758F1 /* 10000.gamemap in Resources */ = {isa = PBXBuildFile; fileRef = AEDCE55D16D7D19F00C758F1 /* 10000.gamemap */; };
@@ -2485,8 +2489,8 @@
 		41D3AC6416BAA73D00C74610 /* FlurryAds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAds.h; sourceTree = "<group>"; };
 		41D3AC6516BAA73D00C74610 /* libFlurryAds.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurryAds.a; sourceTree = "<group>"; };
 		41D3AC6716BB045B00C74610 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
-		41D8DDCC169C51C40041B503 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
-		41D8DDD7169C55CC0041B503 /* FacebookSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = FacebookSDKResources.bundle; path = ../../../../Documents/FacebookSDK/FacebookSDK.framework/Versions/A/Resources/FacebookSDKResources.bundle; sourceTree = "<group>"; };
+		41D8DDCC169C51C40041B503 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
+		41D8DDD7169C55CC0041B503 /* FacebookSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = FacebookSDKResources.bundle; path = ../FacebookSDK/FacebookSDK.framework/Versions/A/Resources/FacebookSDKResources.bundle; sourceTree = "<group>"; };
 		41D8DDDB169C562B0041B503 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		41D8DDDD169C562B0041B503 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		41DF3D9F169B294000B9678B /* arrow_base_1-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow_base_1-ipadhd.png"; sourceTree = "<group>"; };
@@ -2642,6 +2646,9 @@
 		AE3BD4B816B12FAC000466C6 /* map_normal_mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = map_normal_mask.png; path = Resources/images/theme_fiskiye/map_selection/map_normal_mask.png; sourceTree = "<group>"; };
 		AE3BD4B916B12FAC000466C6 /* map_normal_mask@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "map_normal_mask@2x.png"; path = "Resources/images/theme_fiskiye/map_selection/map_normal_mask@2x.png"; sourceTree = "<group>"; };
 		AE4D84D116AEEB8800F3C097 /* move.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = move.mp3; sourceTree = "<group>"; };
+		AE521E0117549C11000C3974 /* FacebookSDK */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = FacebookSDK; path = FacebookSDK/FacebookSDK.framework/FacebookSDK; sourceTree = "<group>"; };
+		AE521E061754CA31000C3974 /* InfoScreenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoScreenView.h; sourceTree = "<group>"; };
+		AE521E071754CA31000C3974 /* InfoScreenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoScreenView.m; sourceTree = "<group>"; };
 		AE74542016A4351600D0AF37 /* level_star_passive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = level_star_passive.png; path = Resources/images/theme_fiskiye/map_selection/level_star_passive.png; sourceTree = "<group>"; };
 		AE74542116A4351600D0AF37 /* level_star_passive@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "level_star_passive@2x.png"; path = "Resources/images/theme_fiskiye/map_selection/level_star_passive@2x.png"; sourceTree = "<group>"; };
 		AE74542616A435C900D0AF37 /* level_star_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = level_star_active.png; path = Resources/images/theme_fiskiye/map_selection/level_star_active.png; sourceTree = "<group>"; };
@@ -2655,6 +2662,12 @@
 		AE9CD0EA16946E2000C42824 /* game_history.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = game_history.json; sourceTree = "<group>"; };
 		AEB8D28916A456CF00262CF5 /* SoundManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SoundManager.h; path = Managers/SoundManager.h; sourceTree = "<group>"; };
 		AEB8D28A16A456D000262CF5 /* SoundManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SoundManager.m; path = Managers/SoundManager.m; sourceTree = "<group>"; };
+		AEC3942717588C8D00919F3A /* MapSelectionScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapSelectionScrollView.h; sourceTree = "<group>"; };
+		AEC3942817588C8D00919F3A /* MapSelectionScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapSelectionScrollView.m; sourceTree = "<group>"; };
+		AEC3942A17588FC600919F3A /* GTGScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTGScrollView.h; sourceTree = "<group>"; };
+		AEC3942B17588FC600919F3A /* GTGScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTGScrollView.m; sourceTree = "<group>"; };
+		AEC3942D1758971600919F3A /* PackageSelectionScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PackageSelectionScrollView.h; sourceTree = "<group>"; };
+		AEC3942E1758971600919F3A /* PackageSelectionScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PackageSelectionScrollView.m; sourceTree = "<group>"; };
 		AED218A816BA6C0000271930 /* tut_highlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tut_highlight.png; sourceTree = "<group>"; };
 		AED218A916BA6C0000271930 /* tut_highlight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tut_highlight@2x.png"; sourceTree = "<group>"; };
 		AEDCE55D16D7D19F00C758F1 /* 10000.gamemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 10000.gamemap; sourceTree = "<group>"; };
@@ -3120,6 +3133,7 @@
 		05A38C2D169451D3005ADBED /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AE521E051754C9BE000C3974 /* View Parts */,
 				05A38C2E169451D3005ADBED /* ArrowGameLayer.h */,
 				05A38C2F169451D3005ADBED /* ArrowGameLayer.m */,
 				05A38C32169451D3005ADBED /* MainGameLayer.h */,
@@ -3190,6 +3204,7 @@
 		410AA1201670D9B500F6DCCA = {
 			isa = PBXGroup;
 			children = (
+				AE521E0117549C11000C3974 /* FacebookSDK */,
 				41B94CBB16C29C0300B7C70A /* Icon-72.png */,
 				41B94CBC16C29C0300B7C70A /* Icon-72@2x.png */,
 				41B94CBD16C29C0300B7C70A /* Icon-Small-50.png */,
@@ -4577,6 +4592,21 @@
 				05A1417B16A5966600026343 /* map_selection_masklayer@2x.png */,
 			);
 			name = map_selection;
+			sourceTree = "<group>";
+		};
+		AE521E051754C9BE000C3974 /* View Parts */ = {
+			isa = PBXGroup;
+			children = (
+				AE521E061754CA31000C3974 /* InfoScreenView.h */,
+				AE521E071754CA31000C3974 /* InfoScreenView.m */,
+				AEC3942717588C8D00919F3A /* MapSelectionScrollView.h */,
+				AEC3942817588C8D00919F3A /* MapSelectionScrollView.m */,
+				AEC3942A17588FC600919F3A /* GTGScrollView.h */,
+				AEC3942B17588FC600919F3A /* GTGScrollView.m */,
+				AEC3942D1758971600919F3A /* PackageSelectionScrollView.h */,
+				AEC3942E1758971600919F3A /* PackageSelectionScrollView.m */,
+			);
+			name = "View Parts";
 			sourceTree = "<group>";
 		};
 		AE996768169F13CE00983CEA /* Managers */ = {
@@ -6021,6 +6051,10 @@
 				0572C10B16AFF71F00B9BF9D /* Reachability.m in Sources */,
 				AEEF67C216B28086005B516B /* TutorialManager.m in Sources */,
 				057E222416B6AC0000DCF50C /* TransitionManager.m in Sources */,
+				AE521E081754CA31000C3974 /* InfoScreenView.m in Sources */,
+				AEC3942917588C8D00919F3A /* MapSelectionScrollView.m in Sources */,
+				AEC3942C17588FC600919F3A /* GTGScrollView.m in Sources */,
+				AEC3942F1758971700919F3A /* PackageSelectionScrollView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6100,7 +6134,7 @@
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../../../Documents/FacebookSDK\"",
+					"\"$(SRCROOT)/FacebookSDK\"",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -6112,6 +6146,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/OkParcalari/Flurry\"",
 					"\"$(SRCROOT)/OkParcalari/FlurryAds\"",
+					"\"$(SRCROOT)/FacebookSDK/FacebookSDK.framework\"",
 				);
 				OTHER_LDFLAGS = (
 					"-lz",
@@ -6134,7 +6169,7 @@
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../../../Documents/FacebookSDK\"",
+					"\"$(SRCROOT)/FacebookSDK\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = OkParcalari/Prefix.pch;
@@ -6145,6 +6180,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/OkParcalari/Flurry\"",
 					"\"$(SRCROOT)/OkParcalari/FlurryAds\"",
+					"\"$(SRCROOT)/FacebookSDK/FacebookSDK.framework\"",
 				);
 				OTHER_LDFLAGS = (
 					"-lz",
