@@ -8,6 +8,7 @@
 
 #import "Map.h"
 #import "DatabaseManager.h"
+#import "GreenTheGardenIAPSpecificValues.h"
 
 @implementation MapPackage
 
@@ -15,19 +16,20 @@
 {
     NSArray* packages;
     packages =@[
-                [MapPackage packageWithId:10000 andName:STANDART_PACKAGE],
-                [MapPackage packageWithId:11000 andName:EASY_PACKAGE],
-                [MapPackage packageWithId:12000 andName:NORMAL_PACKAGE],
-                [MapPackage packageWithId:13000 andName:HARD_PACKAGE],
-                [MapPackage packageWithId:14000 andName:INSANE_PACKAGE]];
+                [MapPackage packageWithId:10000 andName:STANDART_PACKAGE andInAppId:iProUpgradeKey],
+                [MapPackage packageWithId:11000 andName:EASY_PACKAGE andInAppId:iEasyPackageKey],
+                [MapPackage packageWithId:12000 andName:NORMAL_PACKAGE andInAppId:iNormalPackageKey],
+                [MapPackage packageWithId:13000 andName:HARD_PACKAGE andInAppId:iHardPackageKey],
+                [MapPackage packageWithId:14000 andName:INSANE_PACKAGE andInAppId:iInsanePackageKey]];
     return packages;
 }
 
-+ (MapPackage*) packageWithId:(int)packageId andName:(NSString*)name
++ (MapPackage*) packageWithId:(int)packageId andName:(NSString*)name andInAppId:(NSString*) inAppId
 {
     MapPackage* package = [[MapPackage alloc] init];
     package.name = name;
     package.packageId = packageId;
+    package.inAppId = inAppId;
     return package;
 }
 

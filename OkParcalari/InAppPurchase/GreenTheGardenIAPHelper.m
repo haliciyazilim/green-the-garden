@@ -26,12 +26,18 @@
     UIButton *restoreButton;
     BOOL isClosed;
     BOOL isAlertShown;
+    NSString* currentProductId;
+    UIActivityIndicatorView *activity;
 }
 + (GreenTheGardenIAPHelper *)sharedInstance {
     static dispatch_once_t once;
     static GreenTheGardenIAPHelper * sharedInstance;
     dispatch_once(&once, ^{
-        NSDictionary *products = @{iProUpgradeKey : iProUpgradeSecret};
+        NSDictionary *products = @{iProUpgradeKey : iProUpgradeSecret,
+                                   iEasyPackageKey : iEasyPackageSecret,
+                                   iNormalPackageKey : iNormalPackageSecret,
+                                   iHardPackageKey : iHardPackageSecret,
+                                   iInsanePackageKey : iInsanePackageSecret};
         sharedInstance = [[self alloc] initWithProductsDictionary:products];
         [[NSNotificationCenter defaultCenter] addObserver:sharedInstance selector:@selector(productPurchaseCompleted:) name:IAPHelperProductPurchasedNotification object:nil];
     });
@@ -62,12 +68,13 @@
           withParameters:@{@"Solved Map Count" : [NSNumber numberWithInt:count]}];
     }
 }
-- (void) createStore {
+- (void) createStoreForProduct:(NSString *)productId {
+    currentProductId = productId;
     isAlertShown = NO;
     isClosed = NO;
     storeView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 1024.0, 768.0)];
     
-    UIActivityIndicatorView *activity = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    activity = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     [activity setColor:[UIColor blackColor]];
     [activity setHidesWhenStopped:YES];
     [activity startAnimating];
@@ -135,47 +142,65 @@
     
     [[[CCDirector sharedDirector] view] addSubview:storeView];
     
-    [self requestProductsWithCompletionHandler:^(BOOL success, NSArray *products) {
-        if(!isClosed){
-            if([products count] != 0){
-                self.products = products;
-                NSString *description = [[self.products objectAtIndex:0] localizedDescription];
-                NSString *header = [[self.products objectAtIndex:0] localizedTitle];
-               
-                NSNumberFormatter *priceFormatter = [[NSNumberFormatter alloc] init];
-                [priceFormatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
-                [priceFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
-                SKProduct *myProduct = [self.products objectAtIndex:0];
-                
-                [priceFormatter setLocale:myProduct.priceLocale];
-                
-                NSString *priceStr = [priceFormatter stringFromNumber:[[self.products objectAtIndex:0] price]];
-                
-                [activity stopAnimating];
-                [activity removeFromSuperview];
-                
-                [headerLabel setText:header];
-                [descriptionLabel setText:description];
-                [priceLabel setText:priceStr];
-                
-                [buyButton addTarget:self action:@selector(buyPro) forControlEvents:UIControlEventTouchUpInside];
-                
-                [restoreButton addTarget:self action:@selector(restorePurchases) forControlEvents:UIControlEventTouchUpInside];
+    if (!self.products) {
+        [self requestProductsWithCompletionHandler:^(BOOL success, NSArray *products) {
+            if(!isClosed){
+                if([products count] != 0){
+                    self.products = products;
+                    [self productBlock];
+                }
+                else{
+                    UIAlertView *couldNotGetProducts = [[UIAlertView alloc] initWithTitle:@""
+                                                                                  message:NSLocalizedString(@"SERVER_ERROR", nil)
+                                                                                 delegate:self
+                                                                        cancelButtonTitle:NSLocalizedString(@"OK", nil)
+                                                                        otherButtonTitles:nil,nil];
+                    [couldNotGetProducts show];
+                }
             }
-            else{
-                UIAlertView *couldNotGetProducts = [[UIAlertView alloc] initWithTitle:@""
-                                                                              message:NSLocalizedString(@"SERVER_ERROR", nil)
-                                                                             delegate:self
-                                                                    cancelButtonTitle:NSLocalizedString(@"OK", nil)
-                                                                    otherButtonTitles:nil,nil];
-                [couldNotGetProducts show];
+        }];
+    } else {
+        [self productBlock];
+    }
+}
+- (void) productBlock {
+    
+    SKProduct *myProduct = [self getProductWithProductId:currentProductId];
+    NSString *description = [myProduct localizedDescription];
+    NSString *header = [myProduct localizedTitle];
+    
+    NSNumberFormatter *priceFormatter = [[NSNumberFormatter alloc] init];
+    [priceFormatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
+    [priceFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+    
+    [priceFormatter setLocale:myProduct.priceLocale];
+    
+    NSString *priceStr = [priceFormatter stringFromNumber:[[self.products objectAtIndex:0] price]];
+    
+    [activity stopAnimating];
+    [activity removeFromSuperview];
+    
+    [headerLabel setText:header];
+    [descriptionLabel setText:description];
+    [priceLabel setText:priceStr];
+    
+    [buyButton addTarget:self action:@selector(buyProduct) forControlEvents:UIControlEventTouchUpInside];
+    
+    [restoreButton addTarget:self action:@selector(restorePurchases) forControlEvents:UIControlEventTouchUpInside];
+}
+- (SKProduct *)getProductWithProductId:(NSString *)productId {
+    if (self.products) {
+        for (SKProduct* product in [self products]) {
+            if ([product.productIdentifier isEqualToString:productId]) {
+                return product;
             }
         }
-    }];
+    }
+    return nil;
 }
-- (void)buyPro {
+- (void)buyProduct {
     if([[GreenTheGardenIAPHelper sharedInstance] canMakePurchases]){
-        [[GreenTheGardenIAPHelper sharedInstance] buyProduct:[self.products objectAtIndex:0]];
+        [[GreenTheGardenIAPHelper sharedInstance] buyProduct:[self getProductWithProductId:currentProductId]];
     }
     else{
         UIAlertView *couldNotMakePurchasesAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"IN_APP_PURCHASES", nil)
