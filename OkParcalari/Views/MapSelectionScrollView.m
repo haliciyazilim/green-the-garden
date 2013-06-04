@@ -37,6 +37,8 @@
     return self;
 }
 
+
+
 - (void) loadMapIcons
 {
     
@@ -49,8 +51,6 @@
         [self buttonForMap:map atIndex:index];
         index++;
     }
-    [self setContentOffset:CGPointMake(-self.frame.size.width, 0.0) animated:NO];
-    [self setContentOffset:CGPointMake(0.0, 0.0) animated:YES];
 }
 
 - (UIButton*) buttonForMap:(Map*)map atIndex:(int)index

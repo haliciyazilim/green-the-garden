@@ -28,8 +28,7 @@
         topMargin = 26.0;
         contentPadding = 400.0;
         rowCount = 2;
-        [self setShowsHorizontalScrollIndicator:NO];
-        [self setShowsVerticalScrollIndicator:NO];
+        [self loadButtons];
     }
     return self;
 }
@@ -70,6 +69,8 @@
     [self setContentSize:CGSizeMake(unitSize.width*ceil((float)packages.count/(float)rowCount)+unitSize.width*0.5+contentPadding*2.0, unitSize.height*rowCount)];
     
 }
+
+
 
 - (void)refreshScrollView
 {
