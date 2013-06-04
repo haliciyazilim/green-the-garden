@@ -1154,6 +1154,10 @@
 		AE996767169EEC4300983CEA /* Map.m in Sources */ = {isa = PBXBuildFile; fileRef = AE996766169EEC4300983CEA /* Map.m */; };
 		AE9CD0E81694695000C42824 /* GameHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9CD0E71694695000C42824 /* GameHistory.m */; };
 		AE9CD0EB16946E2000C42824 /* game_history.json in Resources */ = {isa = PBXBuildFile; fileRef = AE9CD0EA16946E2000C42824 /* game_history.json */; };
+		AEB62B48175CC1BC0057F7D6 /* mapback_btn_highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = AEB62B44175CC1BC0057F7D6 /* mapback_btn_highlighted.png */; };
+		AEB62B49175CC1BC0057F7D6 /* mapback_btn_highlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AEB62B45175CC1BC0057F7D6 /* mapback_btn_highlighted@2x.png */; };
+		AEB62B4A175CC1BC0057F7D6 /* mapback_btn_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = AEB62B46175CC1BC0057F7D6 /* mapback_btn_normal.png */; };
+		AEB62B4B175CC1BC0057F7D6 /* mapback_btn_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AEB62B47175CC1BC0057F7D6 /* mapback_btn_normal@2x.png */; };
 		AEB8D28B16A456D000262CF5 /* SoundManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AEB8D28A16A456D000262CF5 /* SoundManager.m */; };
 		AEC3942917588C8D00919F3A /* MapSelectionScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC3942817588C8D00919F3A /* MapSelectionScrollView.m */; };
 		AEC3942C17588FC600919F3A /* GTGScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC3942B17588FC600919F3A /* GTGScrollView.m */; };
@@ -2660,6 +2664,10 @@
 		AE9CD0E61694695000C42824 /* GameHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameHistory.h; sourceTree = "<group>"; };
 		AE9CD0E71694695000C42824 /* GameHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameHistory.m; sourceTree = "<group>"; };
 		AE9CD0EA16946E2000C42824 /* game_history.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = game_history.json; sourceTree = "<group>"; };
+		AEB62B44175CC1BC0057F7D6 /* mapback_btn_highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mapback_btn_highlighted.png; path = Resources/images/theme_fiskiye/map_selection/mapback_btn_highlighted.png; sourceTree = "<group>"; };
+		AEB62B45175CC1BC0057F7D6 /* mapback_btn_highlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "mapback_btn_highlighted@2x.png"; path = "Resources/images/theme_fiskiye/map_selection/mapback_btn_highlighted@2x.png"; sourceTree = "<group>"; };
+		AEB62B46175CC1BC0057F7D6 /* mapback_btn_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mapback_btn_normal.png; path = Resources/images/theme_fiskiye/map_selection/mapback_btn_normal.png; sourceTree = "<group>"; };
+		AEB62B47175CC1BC0057F7D6 /* mapback_btn_normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "mapback_btn_normal@2x.png"; path = "Resources/images/theme_fiskiye/map_selection/mapback_btn_normal@2x.png"; sourceTree = "<group>"; };
 		AEB8D28916A456CF00262CF5 /* SoundManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SoundManager.h; path = Managers/SoundManager.h; sourceTree = "<group>"; };
 		AEB8D28A16A456D000262CF5 /* SoundManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SoundManager.m; path = Managers/SoundManager.m; sourceTree = "<group>"; };
 		AEC3942717588C8D00919F3A /* MapSelectionScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapSelectionScrollView.h; sourceTree = "<group>"; };
@@ -4520,6 +4528,10 @@
 		AE2DDBF116A05BB6001BEFAC /* map_selection */ = {
 			isa = PBXGroup;
 			children = (
+				AEB62B44175CC1BC0057F7D6 /* mapback_btn_highlighted.png */,
+				AEB62B45175CC1BC0057F7D6 /* mapback_btn_highlighted@2x.png */,
+				AEB62B46175CC1BC0057F7D6 /* mapback_btn_normal.png */,
+				AEB62B47175CC1BC0057F7D6 /* mapback_btn_normal@2x.png */,
 				AE3BD48616B12E97000466C6 /* GreenTheGarden_Logo.png */,
 				AE3BD48716B12E97000466C6 /* GreenTheGarden_Logo@2x.png */,
 				AE2DDBF616A05BC4001BEFAC /* level_locked.png */,
@@ -5894,6 +5906,10 @@
 				AEDCE62016D7D19F00C758F1 /* 10200.gamemap in Resources */,
 				AEDCE62116D7D19F00C758F1 /* 10201.gamemap in Resources */,
 				AEDCE62216D7D19F00C758F1 /* 10202.gamemap in Resources */,
+				AEB62B48175CC1BC0057F7D6 /* mapback_btn_highlighted.png in Resources */,
+				AEB62B49175CC1BC0057F7D6 /* mapback_btn_highlighted@2x.png in Resources */,
+				AEB62B4A175CC1BC0057F7D6 /* mapback_btn_normal.png in Resources */,
+				AEB62B4B175CC1BC0057F7D6 /* mapback_btn_normal@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

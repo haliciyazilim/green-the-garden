@@ -34,6 +34,7 @@ static MapSelectionLayer* lastInstance;
     MapPackage* currentMapPackage;
     UIViewController * tempVC;
     BOOL shouldCancel;
+    UIButton* backButton;
 }
 
 +(CCScene *) scene
@@ -66,7 +67,6 @@ static MapSelectionLayer* lastInstance;
 
         if(currentMapPackage == nil){
             scrollView = [[PackageSelectionScrollView alloc] init];
-            [scrollView setFrame:CGRectMake(0.0, 300.0, 1024.0, 400.0)];
         }
         else{
             [self showPackage:currentMapPackage];
@@ -117,9 +117,18 @@ static MapSelectionLayer* lastInstance;
         [barView addSubview:musicButton];
         [barView addSubview:gameCenterButton];
         
+
+        backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [backButton setFrame:CGRectMake(80.0, 240.0, 50.0, 50.0)];
+        [backButton setImage:[UIImage imageNamed:@"mapback_btn_normal.png"] forState:UIControlStateNormal];
+        [backButton setImage:[UIImage imageNamed:@"mapback_btn_highlighted.png"] forState:UIControlStateHighlighted];
+        [backButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
+        [backButton setHidden:YES];
+        
         [[[CCDirector sharedDirector] view] addSubview:maskView];
         [[[CCDirector sharedDirector] view] addSubview:logoView];
         [[[CCDirector sharedDirector] view] addSubview:scrollView];
+        [[[CCDirector sharedDirector] view] addSubview:backButton];
         [[[CCDirector sharedDirector] view] addSubview:leafView];
         [[[CCDirector sharedDirector] view] addSubview:barView];
         
@@ -127,14 +136,48 @@ static MapSelectionLayer* lastInstance;
     return self;
 }
 
--(void)showPackage:(MapPackage *)package
+- (void) back
 {
-    [scrollView removeFromSuperview];
-    scrollView = [[MapSelectionScrollView alloc] initWithMapPackage:package];
-    [[[CCDirector sharedDirector] view] addSubview:scrollView];
-    [scrollView setFrame:CGRectMake(0.0, 300.0, 1024.0, 400.0)];
-    [[[CCDirector sharedDirector] view] addSubview:leafView];
-    [[[CCDirector sharedDirector] view] addSubview:barView];
+    [scrollView hideWithCallback:^{
+        [scrollView removeFromSuperview];
+        
+        scrollView = [[PackageSelectionScrollView alloc] init];
+        
+        [[[CCDirector sharedDirector] view] addSubview:scrollView];
+        [[[CCDirector sharedDirector] view] addSubview:leafView];
+        [[[CCDirector sharedDirector] view] addSubview:barView];
+        [scrollView showWithCallback:nil reverse:YES];
+        
+    } reverse:NO];
+    
+    [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        [backButton setAlpha:0.0];
+        [backButton setTransform:CGAffineTransformMakeTranslation(100.0, 0.0)];
+    } completion:^(BOOL finished) {
+        [backButton setHidden:YES];
+    }];
+}
+
+- (void) showPackage:(MapPackage *)package
+{
+    [scrollView hideWithCallback:^{
+        [scrollView removeFromSuperview];
+        scrollView = [[MapSelectionScrollView alloc] initWithMapPackage:package];
+        
+        [[[CCDirector sharedDirector] view] addSubview:scrollView];
+        [[[CCDirector sharedDirector] view] addSubview:leafView];
+        [[[CCDirector sharedDirector] view] addSubview:barView];
+        [scrollView showWithCallback:nil reverse:NO];
+    } reverse:YES];
+    
+    [backButton setTransform:CGAffineTransformMakeTranslation(100.0, 0.0)];
+    [backButton setAlpha:0.0];
+    [backButton setHidden:NO];
+    [UIView animateWithDuration:0.3 delay:0.2 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        [backButton setAlpha:1.0];
+        [backButton setTransform:CGAffineTransformMakeTranslation(0.0, 0.0)];
+    } completion:^(BOOL finished) {
+    }];
 }
 
 
@@ -272,10 +315,6 @@ static MapSelectionLayer* lastInstance;
     [[[InfoScreenView alloc] init] setHidden:NO];
 }
 
-
-
-
-
 - (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     
@@ -290,16 +329,6 @@ static MapSelectionLayer* lastInstance;
 {
 //    NSLog(@"entered makeTransition");
 }
-
-//static MAP_DIFFICULTY difficulty = EASY;
-//+(MAP_DIFFICULTY) getDifficulty
-//{
-//    return difficulty;
-//}
-//+(void) setDifficulty:(MAP_DIFFICULTY)_difficulty
-//{
-//    difficulty = _difficulty;
-//}
 
 static int __lastScroll = 0;
 
