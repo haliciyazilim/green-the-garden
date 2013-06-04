@@ -33,7 +33,7 @@
     static dispatch_once_t once;
     static GreenTheGardenIAPHelper * sharedInstance;
     dispatch_once(&once, ^{
-        NSDictionary *products = @{iProUpgradeKey : iProUpgradeSecret,
+        NSDictionary *products = @{iStandartPackageKey : iStandartPackageSecret,
                                    iEasyPackageKey : iEasyPackageSecret,
                                    iNormalPackageKey : iNormalPackageSecret,
                                    iHardPackageKey : iHardPackageSecret,
@@ -224,7 +224,17 @@
 }
 
 - (BOOL) isPro {
-    return [self productPurchased:iProUpgradeKey];
+    
+    NSString *device = [[UIDevice currentDevice] name];
+    NSString *proString = [NSString stringWithFormat:@"%@%@",iProSecret,device];
+    
+    if ([[[NSUserDefaults standardUserDefaults] stringForKey:iProKey] isEqualToString:[self sha1:proString]]) {
+        return YES;
+    } else {
+        return NO;
+    }
 }
-
+- (BOOL) isProductPurchased:(NSString*)productId {
+    return [self productPurchased:productId];
+}
 @end
