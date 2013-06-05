@@ -23,11 +23,11 @@
     if([[DatabaseManager sharedInstance] isEmpty] || versionNumber == nil || [versionNumber intValue] == 100 || [versionNumber intValue] == 110){
     
         for (MapPackage* package in [MapPackage allPackages]) {
-            NSLog(@"packName: %@",package.name);
+//            NSLog(@"packName: %@",package.name);
             NSString* content = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:package.name ofType:@"packageinfo"]
                                                           encoding:NSUTF8StringEncoding
                                                              error:NULL];
-            NSLog(@"content: %@",content);
+//            NSLog(@"content: %@",content);
             SBJsonParser *parser = [[SBJsonParser alloc] init];
             NSDictionary* file = [parser objectWithString:content];
             
@@ -64,7 +64,7 @@
             }
             [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:120] forKey:@"version_number"];
             [[NSUserDefaults standardUserDefaults] synchronize];
-            [[DatabaseManager sharedInstance] updateMaps];
+            [[DatabaseManager sharedInstance] updateMapsForPackage:package.name];
             
         }
         

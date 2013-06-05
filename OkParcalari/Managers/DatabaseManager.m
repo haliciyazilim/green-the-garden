@@ -61,14 +61,14 @@ static DatabaseManager *sharedInstance = nil;
     if (![self.managedObjectContext save:&error]) {
         // Handle the error.
     }
-    [self updateMaps];
 }
-- (void) updateMaps {
+- (void) updateMapsForPackage:(NSString*)packageId
+{
     int nonPlayedActiveGameCount = kNonPlayedActiveGameCount;
     int freeMapsCount = kFreeMapsCount;
     int index = 0;
-    NSArray* maps = [[DatabaseManager sharedInstance] getMapsForPackage:STANDART_PACKAGE];
-    int purchasedMapsCount = [[MapPackage getPackageWithName:STANDART_PACKAGE] isPurchased] ? [maps count] : freeMapsCount;
+    NSArray* maps = [[DatabaseManager sharedInstance] getMapsForPackage:packageId];
+    int purchasedMapsCount = [[MapPackage getPackageWithName:packageId] isPurchased] ? [maps count] : freeMapsCount;
 
     for (Map* map in maps) {
         if(purchasedMapsCount > 0){

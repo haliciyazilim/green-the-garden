@@ -42,7 +42,7 @@
 
 - (void) loadMapIcons
 {
-    
+    [[DatabaseManager sharedInstance] updateMapsForPackage:currentMapPackage.name];
     maps = [ArrowGameMap loadMapsFromFile:currentMapPackage.name];
     
     [self setContentSize:CGSizeMake(unitSize.width*ceil((float)maps.count/(float)rowCount)+unitSize.width*0.5+contentPadding*2.0, unitSize.height*rowCount)];
@@ -57,8 +57,15 @@
 - (UIButton*) buttonForMap:(Map*)map atIndex:(int)index
 {
     
+    CGFloat slideAmount;
+    if([[currentMapPackage name] isEqualToString:STANDART_PACKAGE]){
+        slideAmount = (index>=12?unitSize.width*0.5:0);
+    }
+    else{
+        slideAmount = 0;
+    }
     UIButton* button = [[UIButton alloc] initWithFrame:CGRectMake(
-                                                                  (index/rowCount)*unitSize.width + (unitSize.width*0.5*(index%rowCount))+contentPadding+(index>=12?unitSize.width*0.5:0),
+                                                                  (index/rowCount)*unitSize.width + (unitSize.width*0.5*(index%rowCount))+contentPadding+slideAmount,
                                                                   (index%rowCount)*unitSize.height,
                                                                   buttonSize.width,
                                                                   buttonSize.height)];
@@ -129,7 +136,7 @@
     [self loadMapIcons];
 }
 
-- (void) openGameFor:(UIButton*)button
+- (void) onClick:(UIButton*)button
 {
     Map* selectedMap;
     for(Map* map in maps){

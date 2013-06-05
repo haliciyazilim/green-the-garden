@@ -225,6 +225,7 @@ static MapSelectionLayer* lastInstance;
         [leafView removeFromSuperview];
         [barView removeFromSuperview];
         [logoView removeFromSuperview];
+        [backButton removeFromSuperview];
         [self removeFromParentAndCleanup:YES];
 
     }];
@@ -259,7 +260,7 @@ static MapSelectionLayer* lastInstance;
 }
 
 - (void)productPurchased:(NSNotification *)notification {
-    [[DatabaseManager sharedInstance] updateMaps];
+//    [[DatabaseManager sharedInstance] updateMaps];
     [scrollView refreshScrollView];
 }
 - (void)fxClicked:(UIButton *)button {

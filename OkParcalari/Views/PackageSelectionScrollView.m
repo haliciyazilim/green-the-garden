@@ -44,14 +44,14 @@
                             buttonSize.width,
                             buttonSize.height);
     
-    if([package isPurchased] || [[package name] isEqualToString:STANDART_PACKAGE]){
+//    if([package isPurchased] || [[package name] isEqualToString:STANDART_PACKAGE]){
         [button addTarget:self action:@selector(openMapsFor:) forControlEvents:UIControlEventTouchUpInside];
-    }else{
-        [button addTarget:self action:@selector(openStoreFor:) forControlEvents:UIControlEventTouchUpInside];
-        UIImageView* lock = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"package_lock.png"]];
-        [lock setFrame:CGRectMake(0.0,0.0,button.frame.size.width,button.frame.size.height)];
-        [[button imageView] addSubview:lock];
-    }
+//    }else{
+//        [button addTarget:self action:@selector(openStoreFor:) forControlEvents:UIControlEventTouchUpInside];
+//        UIImageView* lock = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"package_lock.png"]];
+//        [lock setFrame:CGRectMake(0.0,0.0,button.frame.size.width,button.frame.size.height)];
+//        [[button imageView] addSubview:lock];
+//    }
     [button setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@.png",package.name]] forState:UIControlStateNormal];
     return button;
 
