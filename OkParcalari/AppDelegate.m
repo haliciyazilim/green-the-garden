@@ -27,6 +27,8 @@
 #import "GreenTheGardenGCSpecificValues.h"
 #import "AchievementManager.h"
 
+#import "ArrowGameMap.h"
+
 @implementation AppController
 
 @synthesize window=window_, navController=navController_, director=director_;
@@ -114,6 +116,8 @@
 	
 	// make main window visible
 	[window_ makeKeyAndVisible];
+    
+    [ArrowGameMap configureDatabase];
     
     return YES;
 }

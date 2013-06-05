@@ -23,9 +23,9 @@
 {
     self = [super init];
     if (self) {
-        buttonSize = CGSizeMake(260.0, 175.0);
-        unitSize = CGSizeMake(280.0, 195.0);
-        topMargin = 26.0;
+        buttonSize = CGSizeMake(355.0, 195.0);
+        unitSize = CGSizeMake(385.0, 205.0);
+        topMargin = 5.0;
         contentPadding = 400.0;
         rowCount = 2;
         [self loadButtons];
@@ -40,7 +40,7 @@
 
     button.frame = CGRectMake(
                             (index/rowCount)*unitSize.width + (unitSize.width*0.5*(index%rowCount))+contentPadding+(index>=12?unitSize.width*0.5:0),
-                            (index%rowCount)*unitSize.height,
+                            (index%rowCount)*unitSize.height+topMargin,
                             buttonSize.width,
                             buttonSize.height);
     
@@ -48,8 +48,11 @@
         [button addTarget:self action:@selector(openMapsFor:) forControlEvents:UIControlEventTouchUpInside];
     }else{
         [button addTarget:self action:@selector(openStoreFor:) forControlEvents:UIControlEventTouchUpInside];
+        UIImageView* lock = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"package_lock.png"]];
+        [lock setFrame:CGRectMake(0.0,0.0,button.frame.size.width,button.frame.size.height)];
+        [[button imageView] addSubview:lock];
     }
-    [button setBackgroundColor:[UIColor redColor]];
+    [button setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@.png",package.name]] forState:UIControlStateNormal];
     return button;
 
 }
@@ -66,7 +69,7 @@
         index++;
     }
     
-    [self setContentSize:CGSizeMake(unitSize.width*ceil((float)packages.count/(float)rowCount)+unitSize.width*0.5+contentPadding*2.0, unitSize.height*rowCount)];
+    [self setContentSize:CGSizeMake(unitSize.width*ceil((float)packages.count/(float)rowCount)+unitSize.width*0.5+contentPadding*1.5, unitSize.height*rowCount)];
     
 }
 

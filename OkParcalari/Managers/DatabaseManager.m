@@ -67,9 +67,9 @@ static DatabaseManager *sharedInstance = nil;
     int nonPlayedActiveGameCount = kNonPlayedActiveGameCount;
     int freeMapsCount = kFreeMapsCount;
     int index = 0;
-    NSArray* maps = [[DatabaseManager sharedInstance] getMapsForPackage:@"standart"];
-    int purchasedMapsCount = [[GreenTheGardenIAPHelper sharedInstance] isPro] ? [maps count] : freeMapsCount;
-//    purchasedMapsCount = freeMapsCount;
+    NSArray* maps = [[DatabaseManager sharedInstance] getMapsForPackage:STANDART_PACKAGE];
+    int purchasedMapsCount = [[MapPackage getPackageWithName:STANDART_PACKAGE] isPurchased] ? [maps count] : freeMapsCount;
+
     for (Map* map in maps) {
         if(purchasedMapsCount > 0){
             map.isPurchased = YES;

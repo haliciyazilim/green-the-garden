@@ -15,4 +15,7 @@
 + (NSArray*) loadMapsFromFile:(NSString*)fileName;
 
 + (GameMap*) loadFromFile:(NSString*)fileName;
+
++ (void) configureDatabase;
+
 @end

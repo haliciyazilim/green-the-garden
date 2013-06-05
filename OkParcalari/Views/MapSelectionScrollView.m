@@ -32,6 +32,7 @@
         rowCount = 3;
         passiveStar = [UIImage imageNamed:@"level_star_passive.png"];
         activeStar  = [UIImage imageNamed:@"level_star_active.png"];
+        currentMapPackage = mapPackage;
         [self loadMapIcons];
     }
     return self;
@@ -64,7 +65,7 @@
     button.tag = [map.mapId intValue];
     [button setBackgroundImage:[UIImage imageNamed:[NSString stringWithFormat:@"map_%@_bg.png",stringOfDifficulty(map.difficulty)]] forState:UIControlStateNormal];
     
-    BOOL isPassive = map.isLocked || !map.isPurchased;
+    BOOL isPassive = map.isLocked || (!map.isPurchased && [currentMapPackage.name isEqualToString:STANDART_PACKAGE]) ;
     
     [self addSubview:button];
     if(map.order < 10){
@@ -88,7 +89,7 @@
         
         [button addSubview:passiveLayer];
         
-        if(!map.isPurchased){
+        if(!map.isPurchased && [currentMapPackage.name isEqualToString:STANDART_PACKAGE]){
             [passiveLayer setAlpha:1.0];
             [button addTarget:self action:@selector(addStore) forControlEvents:UIControlEventTouchUpInside];
             UIImageView* lock = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"level_locked.png"]];
