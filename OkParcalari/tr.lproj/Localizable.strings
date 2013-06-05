@@ -16,7 +16,7 @@
 "OK" = "Tamam";
 "CONNECTION_ERROR" = "Bağlantı hatası oluştu. Lütfen daha sonra tekrar deneyin.";
 "SERVER_ERROR" = "iTunes Store ile ilgili bir hata oluştu. Lütfen daha sonra tekrar deneyin.";
-"PRODUCT_PURCHASED" = "Tam sürüme başarıyla geçildi. İyi oyunlar!";
+"PRODUCT_PURCHASED" = "İşleminiz başarıyla tamamlanmıştır!";
 "PRODUCT_PURCHASE_FAILED" = "Hata: ";
 "TAP_TO_CLOSE" = "Kapatmak için dokunun";
 "RESTART_APPROVE" = "Yeniden başlamak istediğinize emin misiniz? Kaydedilmemiş ilerlemeniz kaybolacaktır!";
