@@ -35,6 +35,7 @@ static MapSelectionLayer* lastInstance;
     UIViewController * tempVC;
     BOOL shouldCancel;
     UIButton* backButton;
+    UIButton *restoreButton;
 }
 
 +(CCScene *) scene
@@ -110,12 +111,17 @@ static MapSelectionLayer* lastInstance;
         [gameCenterButton setBackgroundImage:[UIImage imageNamed:@"map_barbtn_gc.png"] forState:UIControlStateNormal];
         [gameCenterButton setBackgroundImage:[UIImage imageNamed:@"map_barbtn_gc_hover.png"] forState:UIControlStateHighlighted];
         [gameCenterButton addTarget:self action:@selector(showGameCenter) forControlEvents:UIControlEventTouchUpInside];
-
+        
+        restoreButton = [[UIButton alloc] initWithFrame:CGRectMake(738.0, -2.0, 236.0, 64.0)];
+        [restoreButton setBackgroundImage:[UIImage imageNamed:LocalizedImageName(@"bar_btn_restore", @"png")] forState:UIControlStateNormal];
+        [restoreButton setBackgroundImage:[UIImage imageNamed:LocalizedImageName(@"bar_btn_restore_hover", @"png")] forState:UIControlStateHighlighted];
+        [restoreButton addTarget:self action:@selector(restorePurchases) forControlEvents:UIControlEventTouchUpInside];
         
         [barView addSubview:infoButton];
         [barView addSubview:fxButton];
         [barView addSubview:musicButton];
         [barView addSubview:gameCenterButton];
+        [barView addSubview:restoreButton];
         
 
         backButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -135,7 +141,10 @@ static MapSelectionLayer* lastInstance;
     }
     return self;
 }
-
+- (void) restorePurchases {
+    [GreenTheGardenIAPHelper sharedInstance].isAlertShown = NO;
+    [[GreenTheGardenIAPHelper sharedInstance] restoreCompletedTransactions];
+}
 - (void) back
 {
     [scrollView hideWithCallback:^{

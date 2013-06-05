@@ -25,6 +25,7 @@
     NSMutableSet * _purchasedProductIdentifiers;
     NSString *_deviceName;
     UIActivityIndicatorView *activity;
+    UIView *restoreView;
 }
 - (id) initWithProductsDictionary:(NSDictionary *)products {
     if ( self = [super init] ) {
@@ -51,12 +52,21 @@
     return self;
 }
 - (void)restoreCompletedTransactions {
-    activity = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    
+    CGSize size = [[CCDirector sharedDirector] winSize];
+    
+    restoreView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, size.width, size.height)];
+    UIImageView* imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ingame_menu_frame_Nopaque.png"]];
+    
+    [restoreView addSubview:imageView];
+    
+    activity = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     [activity setHidesWhenStopped:YES];
-    activity.frame = CGRectMake(500.0, 470.0, 60.0, 60.0);
+    activity.frame = CGRectMake((size.width-60.0)*0.5, (size.height-60.0)*0.5, 60.0, 60.0);
     activity.tag = PAYMENT_ACTIVITY_TAG;
     [activity startAnimating];
-    [[[CCDirector sharedDirector] view] addSubview:activity];
+    [restoreView addSubview:activity];
+    [[[CCDirector sharedDirector] view] addSubview:restoreView];
     [[SKPaymentQueue defaultQueue] restoreCompletedTransactions];
 }
 - (void)requestProductsWithCompletionHandler:(RequestProductsCompletionHandler)completionHandler {
@@ -90,21 +100,25 @@
 -(void)paymentQueueRestoreCompletedTransactionsFinished:(SKPaymentQueue *)queue{
     [activity stopAnimating];
     [activity removeFromSuperview];
+    [restoreView removeFromSuperview];
 }
 -(void)paymentQueue:(SKPaymentQueue *)queue restoreCompletedTransactionsFailedWithError:(NSError *)error {
     [activity stopAnimating];
     [activity removeFromSuperview];
+    [restoreView removeFromSuperview];
 }
 - (void)completeTransaction:(SKPaymentTransaction *)transaction {
 
     [activity stopAnimating];
     [activity removeFromSuperview];
+    [restoreView removeFromSuperview];
     [self provideContentForProductIdentifier:transaction.payment.productIdentifier];
     [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
 }
 - (void)restoreTransaction:(SKPaymentTransaction *)transaction {
     [activity stopAnimating];
     [activity removeFromSuperview];
+    [restoreView removeFromSuperview];
     [self provideContentForProductIdentifier:transaction.originalTransaction.payment.productIdentifier];
     [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
 }
