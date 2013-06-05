@@ -12,6 +12,7 @@
 #import "MainGameLayer.h"
 #import "GameCenterManager.h"
 #import "DatabaseManager.h"
+#import "LoadingLayer.h"
 
 //#import <FacebookSDK/FacebookSDK.h>
 #import "Facebook.h"
@@ -102,7 +103,7 @@
 	[CCTexture2D PVRImagesHavePremultipliedAlpha:YES];
 
 	// and add the scene to the stack. The director will run it when it automatically when the view is displayed.
-	[director_ pushScene: [MainGameLayer scene]];
+	[director_ pushScene: [LoadingLayer scene]];
     
     [director_ enableRetinaDisplay:YES];
     
