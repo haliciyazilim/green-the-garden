@@ -12,61 +12,64 @@
 
 + (NSArray*) loadMapsFromFile:(NSString*)fileName
 {
-    NSNumber *versionNumber = [[NSUserDefaults standardUserDefaults] valueForKey:@"version_number"];
-    
-    if([[DatabaseManager sharedInstance] isEmpty] || versionNumber == nil || [versionNumber intValue] == 100){
-    
-        NSString* content = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:fileName ofType:@"packageinfo"]
-                                                      encoding:NSUTF8StringEncoding
-                                                         error:NULL];
-               SBJsonParser *parser = [[SBJsonParser alloc] init];
-        NSDictionary* file = [parser objectWithString:content];
-        
-        for(NSString* mapName in [file objectForKey:@"maps"]){
-            if([[DatabaseManager sharedInstance] getMapWithID:mapName] == nil){
-                NSString* content = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:mapName ofType:@"gamemap"]
-                                                              encoding:NSUTF8StringEncoding
-                                                                 error:NULL];
-                SBJsonParser *parser = [[SBJsonParser alloc] init];
-                NSDictionary* jsonMap = [parser objectWithString:content];
-                Map* map = [ArrowGameMap insertMapToDatabaseFromJsonObject:jsonMap];
-                map.packageId = fileName;
-                map.mapId = mapName;
-                [[DatabaseManager sharedInstance] saveContext];
-            }
-        }
-        
-        NSArray* mapNames = [file objectForKey:@"maps"];
-        for(Map* map in [[DatabaseManager sharedInstance] getAllMaps]){
-            BOOL willBeDeleted = YES;
-            for(NSString* newMapName in mapNames){
-                if([map.mapId compare:newMapName] == 0){
-                    willBeDeleted = NO;
-                    break;
-                }
-            }
-            if(willBeDeleted == YES){
-                [[[DatabaseManager sharedInstance] managedObjectContext] deleteObject:map];
-                [[DatabaseManager sharedInstance] saveContext];
-            }
-        }
-        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:110] forKey:@"version_number"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-        [[DatabaseManager sharedInstance] updateMaps];
-    }
-    
-    if([versionNumber intValue] == 110){
-        
-        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:120] forKey:@"version_number"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-        [[DatabaseManager sharedInstance] updateMaps];
-        
-        [self migrateGameUnlock];
-        
-    }
-    
     return [[DatabaseManager sharedInstance] getMapsForPackage:fileName];
 }
+
++ (void) configureDatabase
+{
+    NSNumber *versionNumber = [[NSUserDefaults standardUserDefaults] valueForKey:@"version_number"];
+    if([[DatabaseManager sharedInstance] isEmpty] || versionNumber == nil || [versionNumber intValue] == 100 || [versionNumber intValue] == 110){
+    
+        for (MapPackage* package in [MapPackage allPackages]) {
+            NSLog(@"packName: %@",package.name);
+            NSString* content = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:package.name ofType:@"packageinfo"]
+                                                          encoding:NSUTF8StringEncoding
+                                                             error:NULL];
+            NSLog(@"content: %@",content);
+            SBJsonParser *parser = [[SBJsonParser alloc] init];
+            NSDictionary* file = [parser objectWithString:content];
+            
+            for(NSString* mapName in [file objectForKey:@"maps"]){
+                if([[DatabaseManager sharedInstance] getMapWithID:mapName] == nil){
+                    NSString* content = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:mapName ofType:@"gamemap"]
+                                                                  encoding:NSUTF8StringEncoding
+                                                                     error:NULL];
+                    SBJsonParser *parser = [[SBJsonParser alloc] init];
+                    NSDictionary* jsonMap = [parser objectWithString:content];
+                    Map* map = [ArrowGameMap insertMapToDatabaseFromJsonObject:jsonMap];
+                    map.packageId = package.name;
+                    map.mapId = mapName;
+                    [[DatabaseManager sharedInstance] saveContext];
+                }
+            }
+            
+            if([package.name isEqualToString:STANDART_PACKAGE]){
+                
+                NSArray* mapNames = [file objectForKey:@"maps"];
+                for(Map* map in [[DatabaseManager sharedInstance] getAllMaps]){
+                    BOOL willBeDeleted = YES;
+                    for(NSString* newMapName in mapNames){
+                        if([map.mapId isEqualToString:newMapName]){
+                            willBeDeleted = NO;
+                            break;
+                        }
+                    }
+                    if(willBeDeleted == YES){
+                        [[[DatabaseManager sharedInstance] managedObjectContext] deleteObject:map];
+                        [[DatabaseManager sharedInstance] saveContext];
+                    }
+                }
+            }
+            [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:120] forKey:@"version_number"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            [[DatabaseManager sharedInstance] updateMaps];
+            
+        }
+        
+        [self migrateGameUnlock];
+    }
+}
+
 
 + (Map *) insertMapToDatabaseFromJsonObject:(NSDictionary*)jsonMap
 {

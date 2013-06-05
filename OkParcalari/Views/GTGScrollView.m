@@ -14,7 +14,7 @@
 {
     self = [super init];
     if (self) {
-        [self setFrame:CGRectMake(0.0, 300.0, 1024.0, 400.0)];
+        [self setFrame:CGRectMake(0.0, 300.0, 1024.0, 410.0)];
         [self setShowsHorizontalScrollIndicator:NO];
         [self setShowsVerticalScrollIndicator:NO];
 

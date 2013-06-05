@@ -17,13 +17,23 @@
     NSArray* packages;
     packages =@[
                 [MapPackage packageWithId:10000 andName:STANDART_PACKAGE andInAppId:iProUpgradeKey],
-                [MapPackage packageWithId:11000 andName:EASY_PACKAGE andInAppId:iEasyPackageKey],
-                [MapPackage packageWithId:12000 andName:NORMAL_PACKAGE andInAppId:iNormalPackageKey],
                 [MapPackage packageWithId:13000 andName:HARD_PACKAGE andInAppId:iHardPackageKey],
-                [MapPackage packageWithId:14000 andName:INSANE_PACKAGE andInAppId:iInsanePackageKey]];
+                [MapPackage packageWithId:11000 andName:EASY_PACKAGE andInAppId:iEasyPackageKey],
+                [MapPackage packageWithId:14000 andName:INSANE_PACKAGE andInAppId:iInsanePackageKey],
+                [MapPackage packageWithId:12000 andName:NORMAL_PACKAGE andInAppId:iNormalPackageKey]
+                ];
     return packages;
 }
 
++ (MapPackage*) getPackageWithName:(NSString*)name
+{
+    NSArray* packages = [MapPackage allPackages];
+    for (MapPackage* package in packages) {
+        if([[package name] isEqualToString:name])
+            return package;
+    }
+    return nil;
+}
 + (MapPackage*) packageWithId:(int)packageId andName:(NSString*)name andInAppId:(NSString*) inAppId
 {
     MapPackage* package = [[MapPackage alloc] init];
