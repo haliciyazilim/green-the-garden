@@ -98,7 +98,6 @@
         
         if(!map.isPurchased && [currentMapPackage.name isEqualToString:STANDART_PACKAGE]){
             [passiveLayer setAlpha:1.0];
-            [button addTarget:self action:@selector(addStore) forControlEvents:UIControlEventTouchUpInside];
             UIImageView* lock = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"level_locked.png"]];
             lock.frame = CGRectMake(buttonSize.width*0.5 - lock.image.size.width*0.5 + 5.0, buttonSize.height * 0.5 , lock.image.size.width, lock.image.size.height);
             [button addSubview:lock];
@@ -106,7 +105,6 @@
         
     }else {
         
-        [button addTarget:self action:@selector(onClick:) forControlEvents:UIControlEventTouchUpInside];
         
         if(map.isFinished){
             for(int i=0;i<3;i++){
@@ -121,6 +119,7 @@
         }
     }
     
+    [button addTarget:self action:@selector(onClick:) forControlEvents:UIControlEventTouchUpInside];
     
     return button;
 }
