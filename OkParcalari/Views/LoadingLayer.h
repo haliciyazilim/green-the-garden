@@ -15,4 +15,5 @@
 + (CCScene *) scene;
 + (LoadingLayer *) lastInstance;
 
+- (void) updateLoadingBarWithPercentage:(NSNumber*)percentage;
 @end

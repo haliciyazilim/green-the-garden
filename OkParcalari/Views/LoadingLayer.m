@@ -8,10 +8,12 @@
 
 #import "LoadingLayer.h"
 
+
 @implementation LoadingLayer
 {
     UIView* loadingBarHolder;
     UIImageView* progressView;
+    UILabel* loadingLabel;
 }
 
 static LoadingLayer* lastInstance = nil;
@@ -62,9 +64,7 @@ static LoadingLayer* lastInstance = nil;
     
     [self initLoadingBar];
     
-    // loadingView start
-    // database()
-    [ArrowGameMap configureDatabase];
+    [[[NSThread alloc] initWithTarget:[ArrowGameMap class] selector:@selector(configureDatabase) object:nil] start];
     
 }
 - (void) initLoadingBar {
@@ -82,7 +82,9 @@ static LoadingLayer* lastInstance = nil;
     
     [[[CCDirector sharedDirector] view] addSubview:loadingBarHolder];
 }
-- (void) updateLoadingBarWithPercentage:(float)percentage {
+- (void) updateLoadingBarWithPercentage:(NSNumber*)perc {
+
+    CGFloat percentage = [perc floatValue];
     
     if (percentage > 0.0) {
         [progressView setFrame:CGRectMake(1.0-(180.0*(1-percentage)), 1.0, progressView.frame.size.width, progressView.frame.size.height)];
