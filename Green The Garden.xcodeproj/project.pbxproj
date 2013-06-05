@@ -44,8 +44,6 @@
 		0516437716B173FB000EBBE7 /* map_barbtn_gc@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0516437316B173FB000EBBE7 /* map_barbtn_gc@2x.png */; };
 		0516437816B173FB000EBBE7 /* map_barbtn_gc_hover.png in Resources */ = {isa = PBXBuildFile; fileRef = 0516437416B173FB000EBBE7 /* map_barbtn_gc_hover.png */; };
 		0516437916B173FB000EBBE7 /* map_barbtn_gc_hover@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0516437516B173FB000EBBE7 /* map_barbtn_gc_hover@2x.png */; };
-		0543B22416BBB7CF0014970B /* Default-Landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 0543B22216BBB7CF0014970B /* Default-Landscape.png */; };
-		0543B22516BBB7CF0014970B /* Default-Landscape@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0543B22316BBB7CF0014970B /* Default-Landscape@2x.png */; };
 		0543B22716BC14F90014970B /* Rabbit On The Moon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0543B22616BC14F90014970B /* Rabbit On The Moon.ttf */; };
 		05450BDC16A545580096FAC3 /* logo_araiplik-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = 05450BA816A545580096FAC3 /* logo_araiplik-ipadhd.png */; };
 		05450BDD16A545580096FAC3 /* logo_araiplik.png in Resources */ = {isa = PBXBuildFile; fileRef = 05450BA916A545580096FAC3 /* logo_araiplik.png */; };
@@ -821,6 +819,11 @@
 		05A38C41169451D3005ADBED /* Squirt.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A38946169451D2005ADBED /* Squirt.m */; };
 		05A38F0F169451D4005ADBED /* ArrowGameLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A38C2F169451D3005ADBED /* ArrowGameLayer.m */; };
 		05A38F11169451D4005ADBED /* MainGameLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A38C33169451D3005ADBED /* MainGameLayer.m */; };
+		05A9B9D9175F4DFE005453C6 /* LoadingLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A9B9D8175F4DFE005453C6 /* LoadingLayer.m */; };
+		05A9B9DC175F52E1005453C6 /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 05A9B9DA175F52E1005453C6 /* Default-Landscape@2x~ipad.png */; };
+		05A9B9DD175F52E1005453C6 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 05A9B9DB175F52E1005453C6 /* Default-Landscape~ipad.png */; };
+		05A9B9E1175F5C93005453C6 /* progressbar_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 05A9B9DF175F5C93005453C6 /* progressbar_bg@2x.png */; };
+		05A9B9E2175F5C93005453C6 /* progressbar_yesil@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 05A9B9E0175F5C93005453C6 /* progressbar_yesil@2x.jpg */; };
 		05C4B5B816B7C64500A078F1 /* transition_leafs.png in Resources */ = {isa = PBXBuildFile; fileRef = 05C4B5B416B7C64500A078F1 /* transition_leafs.png */; };
 		05C950F016BA9D1D008D5C4A /* congratulation-en.png in Resources */ = {isa = PBXBuildFile; fileRef = 05C950EC16BA9D1D008D5C4A /* congratulation-en.png */; };
 		05C950F216BA9D1D008D5C4A /* congratulation-tr.png in Resources */ = {isa = PBXBuildFile; fileRef = 05C950EE16BA9D1D008D5C4A /* congratulation-tr.png */; };
@@ -1595,8 +1598,6 @@
 		0516437316B173FB000EBBE7 /* map_barbtn_gc@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map_barbtn_gc@2x.png"; sourceTree = "<group>"; };
 		0516437416B173FB000EBBE7 /* map_barbtn_gc_hover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_barbtn_gc_hover.png; sourceTree = "<group>"; };
 		0516437516B173FB000EBBE7 /* map_barbtn_gc_hover@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map_barbtn_gc_hover@2x.png"; sourceTree = "<group>"; };
-		0543B22216BBB7CF0014970B /* Default-Landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape.png"; sourceTree = "<group>"; };
-		0543B22316BBB7CF0014970B /* Default-Landscape@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape@2x.png"; sourceTree = "<group>"; };
 		0543B22616BC14F90014970B /* Rabbit On The Moon.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Rabbit On The Moon.ttf"; path = "Resources/Rabbit On The Moon.ttf"; sourceTree = "<group>"; };
 		05450BA816A545580096FAC3 /* logo_araiplik-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo_araiplik-ipadhd.png"; sourceTree = "<group>"; };
 		05450BA916A545580096FAC3 /* logo_araiplik.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_araiplik.png; sourceTree = "<group>"; };
@@ -2423,6 +2424,12 @@
 		05A38C2F169451D3005ADBED /* ArrowGameLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrowGameLayer.m; sourceTree = "<group>"; };
 		05A38C32169451D3005ADBED /* MainGameLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainGameLayer.h; sourceTree = "<group>"; };
 		05A38C33169451D3005ADBED /* MainGameLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainGameLayer.m; sourceTree = "<group>"; };
+		05A9B9D7175F4DFE005453C6 /* LoadingLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingLayer.h; sourceTree = "<group>"; };
+		05A9B9D8175F4DFE005453C6 /* LoadingLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingLayer.m; sourceTree = "<group>"; };
+		05A9B9DA175F52E1005453C6 /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
+		05A9B9DB175F52E1005453C6 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
+		05A9B9DF175F5C93005453C6 /* progressbar_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "progressbar_bg@2x.png"; sourceTree = "<group>"; };
+		05A9B9E0175F5C93005453C6 /* progressbar_yesil@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "progressbar_yesil@2x.jpg"; sourceTree = "<group>"; };
 		05C4B5B416B7C64500A078F1 /* transition_leafs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = transition_leafs.png; sourceTree = "<group>"; };
 		05C950EC16BA9D1D008D5C4A /* congratulation-en.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "congratulation-en.png"; sourceTree = "<group>"; };
 		05C950EE16BA9D1D008D5C4A /* congratulation-tr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "congratulation-tr.png"; sourceTree = "<group>"; };
@@ -3562,6 +3569,7 @@
 		059D6724169438C000B6B4E6 /* squirt */ = {
 			isa = PBXGroup;
 			children = (
+				05A9B9DE175F5C93005453C6 /* progress_bar */,
 				AE855A1D175DD67500156D62 /* package_selection */,
 				05C4B5B116B7C64500A078F1 /* transition */,
 				055838EE16B2CC6B00B33B1C /* game_win */,
@@ -3703,6 +3711,8 @@
 			isa = PBXGroup;
 			children = (
 				AE521E051754C9BE000C3974 /* View Parts */,
+				05A9B9D7175F4DFE005453C6 /* LoadingLayer.h */,
+				05A9B9D8175F4DFE005453C6 /* LoadingLayer.m */,
 				05A38C2E169451D3005ADBED /* ArrowGameLayer.h */,
 				05A38C2F169451D3005ADBED /* ArrowGameLayer.m */,
 				05A38C32169451D3005ADBED /* MainGameLayer.h */,
@@ -3727,6 +3737,16 @@
 			);
 			name = maps;
 			path = Resources/maps;
+			sourceTree = "<group>";
+		};
+		05A9B9DE175F5C93005453C6 /* progress_bar */ = {
+			isa = PBXGroup;
+			children = (
+				05A9B9DF175F5C93005453C6 /* progressbar_bg@2x.png */,
+				05A9B9E0175F5C93005453C6 /* progressbar_yesil@2x.jpg */,
+			);
+			name = progress_bar;
+			path = Resources/images/theme_fiskiye/progress_bar;
 			sourceTree = "<group>";
 		};
 		05C4B5B116B7C64500A078F1 /* transition */ = {
@@ -3783,8 +3803,8 @@
 				41B94CBD16C29C0300B7C70A /* Icon-Small-50.png */,
 				41B94CBE16C29C0300B7C70A /* Icon-Small-50@2x.png */,
 				41B78B9816A0453400C327E3 /* GreenTheGarden.xcdatamodeld */,
-				0543B22216BBB7CF0014970B /* Default-Landscape.png */,
-				0543B22316BBB7CF0014970B /* Default-Landscape@2x.png */,
+				05A9B9DA175F52E1005453C6 /* Default-Landscape@2x~ipad.png */,
+				05A9B9DB175F52E1005453C6 /* Default-Landscape~ipad.png */,
 				410AA1411670D9B500F6DCCA /* OkParcalari */,
 				410AA12E1670D9B500F6DCCA /* Frameworks */,
 				410AA12C1670D9B500F6DCCA /* Products */,
@@ -6026,8 +6046,6 @@
 				05C950F216BA9D1D008D5C4A /* congratulation-tr.png in Resources */,
 				05C950F616BA9DB6008D5C4A /* congratulation-en-ipadhd.png in Resources */,
 				05C950F716BA9DB6008D5C4A /* congratulation-tr-ipadhd.png in Resources */,
-				0543B22416BBB7CF0014970B /* Default-Landscape.png in Resources */,
-				0543B22516BBB7CF0014970B /* Default-Landscape@2x.png in Resources */,
 				0543B22716BC14F90014970B /* Rabbit On The Moon.ttf in Resources */,
 				05F6FCB716C14B4F00496890 /* youwin_restart_hover-en.png in Resources */,
 				05F6FCB816C14B4F00496890 /* youwin_restart_hover-en@2x.png in Resources */,
@@ -7039,6 +7057,10 @@
 				05C9808F175E175B00FF1CB3 /* bar_btn_restore-en@2x.png in Resources */,
 				05C98090175E175B00FF1CB3 /* bar_btn_restore-tr.png in Resources */,
 				05C98091175E175B00FF1CB3 /* bar_btn_restore-tr@2x.png in Resources */,
+				05A9B9DC175F52E1005453C6 /* Default-Landscape@2x~ipad.png in Resources */,
+				05A9B9DD175F52E1005453C6 /* Default-Landscape~ipad.png in Resources */,
+				05A9B9E1175F5C93005453C6 /* progressbar_bg@2x.png in Resources */,
+				05A9B9E2175F5C93005453C6 /* progressbar_yesil@2x.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7200,6 +7222,7 @@
 				AEC3942917588C8D00919F3A /* MapSelectionScrollView.m in Sources */,
 				AEC3942C17588FC600919F3A /* GTGScrollView.m in Sources */,
 				AEC3942F1758971700919F3A /* PackageSelectionScrollView.m in Sources */,
+				05A9B9D9175F4DFE005453C6 /* LoadingLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
