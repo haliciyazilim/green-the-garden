@@ -9,6 +9,7 @@
 #import "ArrowGameMap.h"
 #import "GreenTheGardenIAPHelper.h"
 #import "GreenTheGardenIAPSpecificValues.h"
+#import "LoadingLayer.h"
 
 @implementation ArrowGameMap
 
@@ -20,7 +21,9 @@
 + (void) configureDatabase
 {
     NSNumber *versionNumber = [[NSUserDefaults standardUserDefaults] valueForKey:@"version_number"];
-    if([[DatabaseManager sharedInstance] isEmpty] || versionNumber == nil || [versionNumber intValue] == 100 || [versionNumber intValue] == 110){
+    CGFloat totalMapCount = 359.0;
+    CGFloat proccessedMapCount = 0.0;
+    if(YES || [[DatabaseManager sharedInstance] isEmpty] || versionNumber == nil || [versionNumber intValue] == 100 || [versionNumber intValue] == 110){
     
         for (MapPackage* package in [MapPackage allPackages]) {
 //            NSLog(@"packName: %@",package.name);
@@ -43,6 +46,8 @@
                     map.mapId = mapName;
                     [[DatabaseManager sharedInstance] saveContext];
                 }
+                proccessedMapCount += 1.0;
+                [[LoadingLayer lastInstance] performSelectorOnMainThread:@selector(updateLoadingBarWithPercentage:) withObject:[NSNumber numberWithFloat:proccessedMapCount/totalMapCount] waitUntilDone:NO];
             }
             
             if([package.name isEqualToString:STANDART_PACKAGE]){
@@ -65,7 +70,6 @@
             [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:120] forKey:@"version_number"];
             [[NSUserDefaults standardUserDefaults] synchronize];
             [[DatabaseManager sharedInstance] updateMapsForPackage:package.name];
-            
         }
         
         [self migrateGameUnlock];
