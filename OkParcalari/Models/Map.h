@@ -35,7 +35,6 @@ NSString* stringOfDifficulty(MAP_DIFFICULTY difficulty);
 @property (nonatomic) NSArray* maps;
 @property NSString* inAppId;
 
-- (void) purchasePackage;
 - (BOOL) isPurchased;
 
 @end

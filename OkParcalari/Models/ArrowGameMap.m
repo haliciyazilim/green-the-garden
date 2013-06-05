@@ -7,6 +7,8 @@
 //
 
 #import "ArrowGameMap.h"
+#import "GreenTheGardenIAPHelper.h"
+#import "GreenTheGardenIAPSpecificValues.h"
 
 @implementation ArrowGameMap
 
@@ -113,7 +115,17 @@
 #pragma mark Alperen dolduracak
 + (void) migrateGameUnlock
 {
-    
+    if ([[GreenTheGardenIAPHelper sharedInstance] isProductPurchased:iStandartPackageKey]) {
+        // this is an update and need to write pro version to user defaults for removing ads
+        
+        NSString* deviceName = [[UIDevice currentDevice] name];
+        
+        NSString *proString = [NSString stringWithFormat:@"%@%@",iProSecret,deviceName];
+        
+        [[NSUserDefaults standardUserDefaults] setObject:[[GreenTheGardenIAPHelper sharedInstance] sha1:proString] forKey:iProKey];
+        
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
 }
 
 @end

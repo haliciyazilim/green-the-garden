@@ -9,6 +9,7 @@
 #import "Map.h"
 #import "DatabaseManager.h"
 #import "GreenTheGardenIAPSpecificValues.h"
+#import "GreenTheGardenIAPHelper.h"
 
 @implementation MapPackage
 
@@ -16,11 +17,11 @@
 {
     NSArray* packages;
     packages =@[
-                [MapPackage packageWithId:10000 andName:STANDART_PACKAGE andInAppId:iProUpgradeKey],
-                [MapPackage packageWithId:13000 andName:HARD_PACKAGE andInAppId:iHardPackageKey],
+                [MapPackage packageWithId:10000 andName:STANDART_PACKAGE andInAppId:iStandartPackageKey],
                 [MapPackage packageWithId:11000 andName:EASY_PACKAGE andInAppId:iEasyPackageKey],
-                [MapPackage packageWithId:14000 andName:INSANE_PACKAGE andInAppId:iInsanePackageKey],
-                [MapPackage packageWithId:12000 andName:NORMAL_PACKAGE andInAppId:iNormalPackageKey]
+                [MapPackage packageWithId:12000 andName:NORMAL_PACKAGE andInAppId:iNormalPackageKey],
+                [MapPackage packageWithId:13000 andName:HARD_PACKAGE andInAppId:iHardPackageKey],
+                [MapPackage packageWithId:14000 andName:INSANE_PACKAGE andInAppId:iInsanePackageKey]
                 ];
     return packages;
 }
@@ -54,14 +55,9 @@
 #pragma mark Alperen dolduracak
 - (BOOL)isPurchased
 {
-    return NO;
+    return [[GreenTheGardenIAPHelper sharedInstance] isProductPurchased:self.inAppId];
 }
 
-#pragma mark Alperen doldruacak
-- (void)purchasePackage
-{
-    
-}
 @end
 
 @implementation Map

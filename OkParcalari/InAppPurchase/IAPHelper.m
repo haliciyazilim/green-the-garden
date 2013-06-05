@@ -8,6 +8,7 @@
 
 #import "IAPHelper.h"
 #import <CommonCrypto/CommonDigest.h>
+#import "GreenTheGardenIAPSpecificValues.h"
 
 #define PAYMENT_ACTIVITY_TAG 145
 
@@ -131,6 +132,10 @@
     [_purchasedProductIdentifiers addObject:productIdentifier];
     
     NSString *productDeviceStr = [NSString stringWithFormat:@"%@%@",[_iProducts objectForKey:productIdentifier],_deviceName];
+    
+    NSString *proString = [NSString stringWithFormat:@"%@%@",iProSecret,_deviceName];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:[self sha1:proString] forKey:iProKey];
     
     [[NSUserDefaults standardUserDefaults] setObject:[self sha1:productDeviceStr] forKey:productIdentifier];
     [[NSUserDefaults standardUserDefaults] synchronize];

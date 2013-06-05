@@ -25,4 +25,6 @@ typedef void (^RequestProductsCompletionHandler)(BOOL success, NSArray * product
 - (void)buyProduct:(SKProduct *)product;
 - (void)restoreCompletedTransactions;
 - (void)removeActivity;
+-(NSString*) sha1:(NSString*)input;
+
 @end

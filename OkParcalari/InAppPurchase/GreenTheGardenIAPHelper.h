@@ -16,5 +16,6 @@
 + (GreenTheGardenIAPHelper *) sharedInstance;
 
 - (BOOL) isPro;
+- (BOOL) isProductPurchased:(NSString*)productId;
 - (void) createStoreForProduct:(NSString*)productId;
 @end
