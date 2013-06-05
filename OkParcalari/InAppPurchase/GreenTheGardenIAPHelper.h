@@ -12,6 +12,7 @@
 @interface GreenTheGardenIAPHelper : IAPHelper
 
 @property MapSelectionLayer *callerLayer;
+@property BOOL isAlertShown;
 
 + (GreenTheGardenIAPHelper *) sharedInstance;
 

@@ -25,7 +25,6 @@
     UIButton *buyButton;
     UIButton *restoreButton;
     BOOL isClosed;
-    BOOL isAlertShown;
     NSString* currentProductId;
     UIActivityIndicatorView *activity;
 }
@@ -39,20 +38,21 @@
                                    iHardPackageKey : iHardPackageSecret,
                                    iInsanePackageKey : iInsanePackageSecret};
         sharedInstance = [[self alloc] initWithProductsDictionary:products];
+        sharedInstance.isAlertShown = NO;
         [[NSNotificationCenter defaultCenter] addObserver:sharedInstance selector:@selector(productPurchaseCompleted:) name:IAPHelperProductPurchasedNotification object:nil];
     });
     return sharedInstance;
 }
 - (void)productPurchaseCompleted:(NSNotification *)notif {
     [self closeStore];
-    if(!isAlertShown){
+    if(!_isAlertShown){
         UIAlertView *productPurchased = [[UIAlertView alloc] initWithTitle:@""
                                                                    message:NSLocalizedString(@"PRODUCT_PURCHASED", nil)
                                                                   delegate:self
                                                          cancelButtonTitle:NSLocalizedString(@"OK", nil)
                                                          otherButtonTitles:nil,nil];
         [productPurchased show];
-        isAlertShown = YES;
+        _isAlertShown = YES;
         
         int count = 0;
         for (Map *map in [[DatabaseManager sharedInstance] getAllMaps]) {
@@ -70,7 +70,7 @@
 }
 - (void) createStoreForProduct:(NSString *)productId {
     currentProductId = productId;
-    isAlertShown = NO;
+    _isAlertShown = NO;
     isClosed = NO;
     storeView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 1024.0, 768.0)];
     
