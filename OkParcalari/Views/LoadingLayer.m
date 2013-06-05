@@ -64,6 +64,7 @@ static LoadingLayer* lastInstance = nil;
     
     // loadingView start
     // database()
+    [ArrowGameMap configureDatabase];
     
 }
 - (void) initLoadingBar {

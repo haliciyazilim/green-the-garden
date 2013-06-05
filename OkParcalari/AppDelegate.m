@@ -118,8 +118,6 @@
 	// make main window visible
 	[window_ makeKeyAndVisible];
     
-    [ArrowGameMap configureDatabase];
-    
     return YES;
 }
 
