@@ -39,7 +39,7 @@
     button.tag = package.packageId;
 
     button.frame = CGRectMake(
-                            (index/rowCount)*unitSize.width + (unitSize.width*0.5*(index%rowCount))+contentPadding+(index>=12?unitSize.width*0.5:0),
+                            ceil(index/rowCount)*unitSize.width + ceil(unitSize.width*0.5*(index%rowCount))+contentPadding+(index>=12?unitSize.width*0.5:0),
                             (index%rowCount)*unitSize.height+topMargin,
                             buttonSize.width,
                             buttonSize.height);
