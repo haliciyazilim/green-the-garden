@@ -23,7 +23,6 @@
     UILabel *headerLabel;
     UILabel *priceLabel;
     UIButton *buyButton;
-    UIButton *restoreButton;
     BOOL isClosed;
     NSString* currentProductId;
     UIActivityIndicatorView *activity;
@@ -91,14 +90,9 @@
     [closeButton addTarget:self action:@selector(closeStore) forControlEvents:UIControlEventTouchUpInside];
     
     buyButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [buyButton setFrame:CGRectMake(550.0, 470.0, 148.0, 69.0)];
+    [buyButton setFrame:CGRectMake(470.0, 470.0, 148.0, 69.0)];
     [buyButton setBackgroundImage:[UIImage imageNamed:LocalizedImageName(@"inapp_btn_buynow", @"png")] forState:UIControlStateNormal];
     [buyButton setBackgroundImage:[UIImage imageNamed:LocalizedImageName(@"inapp_btn_buynow_hover", @"png")] forState:UIControlStateHighlighted];
-    
-    restoreButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [restoreButton setFrame:CGRectMake(370.0, 470.0, 148.0, 69.0)];
-    [restoreButton setBackgroundImage:[UIImage imageNamed:LocalizedImageName(@"inapp_btn_purchase", @"png")] forState:UIControlStateNormal];
-    [restoreButton setBackgroundImage:[UIImage imageNamed:LocalizedImageName(@"inapp_btn_purchase_hover", @"png")] forState:UIControlStateHighlighted];
 
     UIImageView *unlockImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"inapp_image.png"]];
     [unlockImage setFrame:CGRectMake(380.0, 285.0, 118.0, 137.0)];
@@ -121,7 +115,7 @@
     [descriptionLabel setText:@""];
     
     priceLabel = [[UILabel alloc] initWithFrame:CGRectMake(400.0, 430.0, 120.0, 40.0)];
-    [priceLabel setFont:[UIFont fontWithName:@"Rabbit On The Moon" size:24.0]];
+    [priceLabel setFont:[UIFont fontWithName:@"Rabbit On The Moon" size:28.0]];
     [priceLabel setBackgroundColor:[UIColor clearColor]];
     [priceLabel setTextColor:[UIColor whiteColor]];
     [priceLabel setShadowColor:[UIColor blackColor]];
@@ -134,7 +128,6 @@
     [storeView addSubview:backView];
     [storeView addSubview:closeButton];
     [storeView addSubview:buyButton];
-    [storeView addSubview:restoreButton];
     [storeView addSubview:unlockImage];
     [storeView addSubview:headerLabel];
     [storeView addSubview:descriptionLabel];
@@ -185,8 +178,6 @@
     [priceLabel setText:priceStr];
     
     [buyButton addTarget:self action:@selector(buyProduct) forControlEvents:UIControlEventTouchUpInside];
-    
-    [restoreButton addTarget:self action:@selector(restorePurchases) forControlEvents:UIControlEventTouchUpInside];
 }
 - (SKProduct *)getProductWithProductId:(NSString *)productId {
     if (self.products) {

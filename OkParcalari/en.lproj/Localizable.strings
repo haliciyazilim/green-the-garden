@@ -15,7 +15,7 @@
 "OK" = "OK";
 "CONNECTION_ERROR" = "There seems to be a connection error. Please try again later.";
 "SERVER_ERROR" = "There seems to be an error with the iTunes Store. Please try again later.";
-"PRODUCT_PURCHASED" = "You have successfully unlocked the full game. Enjoy!";
+"PRODUCT_PURCHASED" = "Successfully completed!";
 "PRODUCT_PURCHASE_FAILED" = "Error: ";
 "TAP_TO_CLOSE" = "Tap to close";
 "RESTART_APPROVE" = "Are you sure want to restart the game? Your unsaved progress will be lost!";
