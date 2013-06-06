@@ -26,11 +26,9 @@
     if(YES || [[DatabaseManager sharedInstance] isEmpty] || versionNumber == nil || [versionNumber intValue] == 100 || [versionNumber intValue] == 110){
     
         for (MapPackage* package in [MapPackage allPackages]) {
-//            NSLog(@"packName: %@",package.name);
             NSString* content = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:package.name ofType:@"packageinfo"]
                                                           encoding:NSUTF8StringEncoding
                                                              error:NULL];
-//            NSLog(@"content: %@",content);
             SBJsonParser *parser = [[SBJsonParser alloc] init];
             NSDictionary* file = [parser objectWithString:content];
             
@@ -44,11 +42,14 @@
                     Map* map = [ArrowGameMap insertMapToDatabaseFromJsonObject:jsonMap];
                     map.packageId = package.name;
                     map.mapId = mapName;
-                    [[DatabaseManager sharedInstance] saveContext];
                 }
+                
                 proccessedMapCount += 1.0;
+                
                 [[LoadingLayer lastInstance] performSelectorOnMainThread:@selector(updateLoadingBarWithPercentage:) withObject:[NSNumber numberWithFloat:proccessedMapCount/totalMapCount] waitUntilDone:NO];
+                
             }
+            
             
             if([package.name isEqualToString:STANDART_PACKAGE]){
                 
@@ -63,16 +64,20 @@
                     }
                     if(willBeDeleted == YES){
                         [[[DatabaseManager sharedInstance] managedObjectContext] deleteObject:map];
-                        [[DatabaseManager sharedInstance] saveContext];
                     }
                 }
             }
             [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:120] forKey:@"version_number"];
             [[NSUserDefaults standardUserDefaults] synchronize];
+            
+            [[DatabaseManager sharedInstance] saveContext];
             [[DatabaseManager sharedInstance] updateMapsForPackage:package.name];
         }
         
         [self migrateGameUnlock];
+    }
+    else{
+        [[LoadingLayer lastInstance] performSelectorOnMainThread:@selector(updateLoadingBarWithPercentage:) withObject:[NSNumber numberWithFloat:1.0] waitUntilDone:NO];
     }
 }
 
@@ -84,7 +89,6 @@
     map.stepCount   = [[jsonMap valueForKey:@"stepCount"] intValue];
     map.tileCount   = [[jsonMap valueForKey:@"tileCount"] intValue];
     map.order       = [[jsonMap valueForKey:@"order"] intValue];
-    [[DatabaseManager sharedInstance] saveContext];
     return map;
 }
 

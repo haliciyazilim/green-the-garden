@@ -65,8 +65,10 @@ static LoadingLayer* lastInstance = nil;
     [self initLoadingBar];
     
     [[[NSThread alloc] initWithTarget:[ArrowGameMap class] selector:@selector(configureDatabase) object:nil] start];
-    
 }
+    
+
+
 - (void) initLoadingBar {
     loadingBarHolder = [[UIView alloc] initWithFrame:CGRectMake((1024.0-182.0)*0.5, 600.0, 182.0, 10.0)];
     UIImageView* backView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"progressbar_bg.png"]];
@@ -91,7 +93,7 @@ static LoadingLayer* lastInstance = nil;
     }
     
     if (percentage == 1.0) {
-        [self makeTransition];
+        [self performSelector:@selector(makeTransition) withObject:nil afterDelay:0.5];
     }
 }
 
