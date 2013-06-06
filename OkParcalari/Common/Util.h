@@ -11,4 +11,9 @@
 NSString* LocalizedImageName(NSString* name, NSString* extension);
 
 @interface Util : NSObject
+
++ (Util*) sharedInstance;
+
+- (NSArray *) getRandomStringsWithCapacity:(int)capacity;
+
 @end

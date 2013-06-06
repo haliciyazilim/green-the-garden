@@ -16,10 +16,10 @@
 #import "AchievementManager.h"
 #import "GreenTheGardenGCSpecificValues.h"
 #import "TransitionManager.h"
-#import "InfoScreenView.h"
 #import "GTGScrollView.h"
 #import "MapSelectionScrollView.h"
 #import "PackageSelectionScrollView.h"
+#import "AboutUs.h"
 
 static MapSelectionLayer* lastInstance;
 
@@ -36,6 +36,10 @@ static MapSelectionLayer* lastInstance;
     BOOL shouldCancel;
     UIButton* backButton;
     UIButton *restoreButton;
+    
+    UIView * aboutUsView;
+    
+    
 }
 
 +(CCScene *) scene
@@ -321,8 +325,47 @@ static MapSelectionLayer* lastInstance;
 }
 
 -(void) infoScreen{
+   
+    CGSize winSize = [CCDirector sharedDirector].winSize;
+    UIImageView *backgroundImgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"inapp_menu_frame.png"]];
+    aboutUsView =[[UIView alloc] initWithFrame:CGRectMake(0, 0, winSize.width, winSize.height)];
+    
+    UIImageView * background=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"inapp_back.png" ]];
+    CGFloat bgWidth=background.frame.size.width;
+    CGFloat bgHeight=background.frame.size.height;
+    
+    UIButton * btnClose=[UIButton buttonWithType:UIButtonTypeCustom];
+    [btnClose setFrame:CGRectMake(bgWidth-55.0,10.0, 45.0, 45.0)];
+    [btnClose setBackgroundImage:[UIImage imageNamed:@"inapp_btn_close.png"] forState:UIControlStateNormal];
+    [btnClose setBackgroundImage:[UIImage imageNamed:@"inapp_btn_close_hover.png"] forState:UIControlStateHighlighted];
+    [btnClose addTarget:self action:@selector(closeInfoScreen) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIView * mask=[[UIView alloc]initWithFrame:CGRectMake(20, 40, bgWidth-40, bgHeight-80)];
+    [mask setBackgroundColor:[UIColor clearColor]];
+    mask.clipsToBounds=YES;
+    
+    AboutUs * credits=[[AboutUs alloc] initWithFrame:CGRectMake(0, 0, mask.frame.size.width, mask.frame.size.height)];
+    [mask addSubview:credits];
+
+    UIView * infoScreen=[[UIView alloc] initWithFrame:CGRectMake((winSize.width-bgWidth)/2, (winSize.height-bgHeight)/2, bgWidth, bgHeight)];
+    infoScreen.clipsToBounds=YES;
+    [infoScreen setBackgroundColor:[UIColor clearColor]];
+    
+    [infoScreen addSubview:background];
+    [infoScreen addSubview:mask];
+    [infoScreen addSubview:btnClose];
+    
+    [aboutUsView addSubview:backgroundImgView];
+    [aboutUsView addSubview:infoScreen];
+    
+    [[[CCDirector sharedDirector] view] addSubview:aboutUsView];
+    
     [Flurry logEvent:kFlurryEventInfoScreenView timed:YES];
-    [[[InfoScreenView alloc] init] setHidden:NO];
+}
+
+-(void)closeInfoScreen{
+    [aboutUsView removeFromSuperview];
+    [Flurry endTimedEvent:kFlurryEventInfoScreenView withParameters:nil];
 }
 
 - (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
