@@ -7,13 +7,15 @@
 //
 
 #import "LoadingLayer.h"
-
+#import "Util.h"
 
 @implementation LoadingLayer
 {
     UIView* loadingBarHolder;
     UIImageView* progressView;
     UILabel* loadingLabel;
+    NSArray* randomStrings;
+    UILabel* loadingString;
 }
 
 static LoadingLayer* lastInstance = nil;
@@ -64,11 +66,14 @@ static LoadingLayer* lastInstance = nil;
     
     [self initLoadingBar];
     
-    [[[NSThread alloc] initWithTarget:[ArrowGameMap class] selector:@selector(configureDatabase) object:nil] start];
+    [self performSelectorInBackground:@selector(beginDatabaseConfiguration) withObject:nil];
     
 }
+- (void) beginDatabaseConfiguration {
+    [ArrowGameMap configureDatabase];
+}
 - (void) initLoadingBar {
-    loadingBarHolder = [[UIView alloc] initWithFrame:CGRectMake((1024.0-182.0)*0.5, 600.0, 182.0, 10.0)];
+    loadingBarHolder = [[UIView alloc] initWithFrame:CGRectMake((1024.0-182.0)*0.5, 614.0, 182.0, 10.0)];
     UIImageView* backView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"progressbar_bg.png"]];
     [loadingBarHolder addSubview:backView];
     [loadingBarHolder.layer setCornerRadius:5.0];
@@ -80,7 +85,20 @@ static LoadingLayer* lastInstance = nil;
     [loadingBarHolder addSubview:progressView];
     [loadingBarHolder setClipsToBounds:YES];
     
+    loadingString = [[UILabel alloc] initWithFrame:CGRectMake((1024.0-182.0)*0.5, 580.0, 182.0, 30.0)];
+    [loadingString setBackgroundColor:[UIColor clearColor]];
+    [loadingString setFont:[UIFont fontWithName:@"Rabbit On The Moon" size:14.0]];
+    [loadingString setTextColor:[UIColor colorWithRed:5.0/255.0 green:62.0/255.0 blue:6.0/255.0 alpha:1.0]];
+    [loadingString.layer setShadowOffset:CGSizeMake(0.0, 1.0)];
+    [loadingString.layer setShadowColor:[[UIColor colorWithWhite:1.0 alpha:0.4] CGColor]];
+    [loadingString setTextAlignment:NSTextAlignmentCenter];
+    [loadingString setText:@""];
+    
     [[[CCDirector sharedDirector] view] addSubview:loadingBarHolder];
+    [[[CCDirector sharedDirector] view] addSubview:loadingString];
+    
+    randomStrings = [[Util sharedInstance] getRandomStringsWithCapacity:5];
+    
 }
 - (void) updateLoadingBarWithPercentage:(NSNumber*)perc {
 
@@ -88,6 +106,17 @@ static LoadingLayer* lastInstance = nil;
     
     if (percentage > 0.0) {
         [progressView setFrame:CGRectMake(1.0-(180.0*(1-percentage)), 1.0, progressView.frame.size.width, progressView.frame.size.height)];
+        if (percentage < 0.2) {
+            [loadingString setText:[randomStrings objectAtIndex:0]];
+        } else if (percentage < 0.4) {
+            [loadingString setText:[randomStrings objectAtIndex:1]];
+        } else if (percentage < 0.6) {
+            [loadingString setText:[randomStrings objectAtIndex:2]];
+        } else if (percentage < 0.8) {
+            [loadingString setText:[randomStrings objectAtIndex:3]];
+        } else {
+            [loadingString setText:[randomStrings objectAtIndex:4]];
+        }
     }
     
     if (percentage == 1.0) {
@@ -98,7 +127,9 @@ static LoadingLayer* lastInstance = nil;
 -(void) makeTransition
 {
     [loadingBarHolder removeFromSuperview];
+    [loadingString removeFromSuperview];
     loadingBarHolder = nil;
+    loadingString = nil;
     self.isTouchEnabled = NO;
     [self removeFromParentAndCleanup:YES];
     [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[MainGameLayer scene] withColor:ccWHITE]];
