@@ -23,7 +23,7 @@
     NSNumber *versionNumber = [[NSUserDefaults standardUserDefaults] valueForKey:@"version_number"];
     CGFloat totalMapCount = 359.0;
     CGFloat proccessedMapCount = 0.0;
-    if(YES || [[DatabaseManager sharedInstance] isEmpty] || versionNumber == nil || [versionNumber intValue] == 100 || [versionNumber intValue] == 110){
+    if([[DatabaseManager sharedInstance] isEmpty] || versionNumber == nil || [versionNumber intValue] == 100 || [versionNumber intValue] == 110){
     
         for (MapPackage* package in [MapPackage allPackages]) {
             NSString* content = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:package.name ofType:@"packageinfo"]
