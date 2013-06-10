@@ -82,7 +82,7 @@ static LoadingLayer* lastInstance = nil;
     [loadingBarHolder addSubview:progressView];
     [loadingBarHolder setClipsToBounds:YES];
     
-    loadingString = [[UILabel alloc] initWithFrame:CGRectMake((1024.0-182.0)*0.5, 580.0, 182.0, 30.0)];
+    loadingString = [[UILabel alloc] initWithFrame:CGRectMake((1024.0-282.0)*0.5, 580.0, 282.0, 30.0)];
     [loadingString setBackgroundColor:[UIColor clearColor]];
     [loadingString setFont:[UIFont fontWithName:@"Rabbit On The Moon" size:14.0]];
     [loadingString setTextColor:[UIColor colorWithRed:5.0/255.0 green:62.0/255.0 blue:6.0/255.0 alpha:1.0]];

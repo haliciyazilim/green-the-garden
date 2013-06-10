@@ -43,15 +43,15 @@ static Util* sharedInstance = nil;
                                 @"Importing bees...",
                                 @"Tiling tiles..."];
     
-    NSArray* turkishStrings = @[@"Planting seeds...",
-                                @"Warming the globe...",
-                                @"Transporting soil...",
-                                @"Cross-breeding tulips...",
-                                @"Tiling pipes...",
-                                @"Browning the garden...",
-                                @"Pressurizing the pumps...",
-                                @"Importing bees...",
-                                @"Tiling tiles..."];
+    NSArray* turkishStrings = @[@"Tohumlar ekiliyor...",
+                                @"Küre ısıtılıyor...",
+                                @"Toprak taşınıyor...",
+                                @"Yeni lale türleri keşfediliyor...",
+                                @"Altyapı çalışması yapılıyor...",
+                                @"Bahçe kahverengilendirme çalışması yapılıyor...",
+                                @"Su basıncı yükseltiliyor...",
+                                @"İthal arı getirtiliyor...",
+                                @"Kareler çapullanıyor..."];
     
     loadingStrings = [[NSMutableDictionary alloc] initWithCapacity:2];
     

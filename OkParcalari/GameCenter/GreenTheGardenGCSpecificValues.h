@@ -51,7 +51,8 @@
 #define kAuthenticationChangedNotification @"AuthenticedChanged"
 
 // Flurry events
-#define kFlurryEventUnlockFullGame @"Full Game Unlocked"
+//#define kFlurryEventUnlockFullGame @"Full Game Unlocked"
+#define kFlurryEventPackagePurchased @"Package Purchased"
 #define kFlurryEventMapStarted @"Map Started"
 #define kFlurryEventMapSolved @"Map Solved"
 #define kFlurryEventAllFreeMapsPlayed @"All Free Maps Solved"

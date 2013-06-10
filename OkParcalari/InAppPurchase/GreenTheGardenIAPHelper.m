@@ -63,8 +63,9 @@
         
         [[AchievementManager sharedAchievementManager] submitAchievement:kAchievementBeAPro percentComplete:100.00];
         
-        [Flurry logEvent:kFlurryEventUnlockFullGame
-          withParameters:@{@"Solved Map Count" : [NSNumber numberWithInt:count]}];
+        [Flurry logEvent:kFlurryEventPackagePurchased
+          withParameters:@{@"Solved Map Count" : [NSNumber numberWithInt:count],
+                            @"Package Name" : notif.object}];
     }
 }
 - (void) createStoreForProduct:(NSString *)productId {
