@@ -183,7 +183,7 @@
     if([self canMakePurchases]){
         activity = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
         [activity setHidesWhenStopped:YES];
-        activity.frame = CGRectMake(500.0, 470.0, 60.0, 60.0);
+        activity.frame = CGRectMake(400.0, 470.0, 60.0, 60.0);
         activity.tag = PAYMENT_ACTIVITY_TAG;
         [activity startAnimating];
         [[[CCDirector sharedDirector] view] addSubview:activity];
