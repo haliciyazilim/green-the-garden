@@ -29,6 +29,8 @@ static Util* sharedInstance = nil;
         sharedInstance = [[Util alloc] init];
         
         [sharedInstance generateLoadingStrings];
+        [sharedInstance generateLocalNotificationStrings];
+
     }
     
     return sharedInstance;
