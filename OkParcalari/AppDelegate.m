@@ -179,7 +179,7 @@ void uncaughtExceptionHandler(NSException *exception) {
     
     int week=3600*24*7;
     UILocalNotification* localNotificationWeek= [[UILocalNotification alloc]init];
-    NSArray * notificationString=[[Util sharedInstance] getRandomStringsWithCapacity:3 isLoading:NO];
+    NSArray * notificationString=[[Util sharedInstance] getRandomStringsWithCapacity:3 andIsLoading:NO];
     if(localNotificationWeek){
         localNotificationWeek.fireDate=[NSDate dateWithTimeIntervalSinceNow:week];
         localNotificationWeek.alertBody=[notificationString objectAtIndex:0];
