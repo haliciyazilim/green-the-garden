@@ -82,7 +82,7 @@ static Util* sharedInstance = nil;
     if (isLoading) {
         allStrings = [loadingStrings objectForKey:suffix];
     } else {
-        allStrings = [loadingStrings objectForKey:suffix];
+        allStrings = [localNotificationStrings objectForKey:suffix];
     }
 
     
