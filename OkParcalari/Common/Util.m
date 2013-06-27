@@ -64,8 +64,12 @@ static Util* sharedInstance = nil;
 }
 
 -(void)generateLocalNotificationStrings{
-    NSArray* englishStrings=@[@"How are you Baby?",@" ",@" "];
-    NSArray* turkishStrings=@[@"Ne zamandır girmiyormuşsun bizim uygulamaya; GİR",@" ",@" "];
+    NSArray* englishStrings=@[@"Your garden is getting arid. Wouldn't you want to green it?",
+                              @"Care to lay some pipes and green your garden?",
+                              @"You haven't attended your garden for some time. Would you like to take a look?"];
+    NSArray* turkishStrings=@[@"Bahçen kuraklaşıyor, yeşillendirmek istemez misin?",
+                              @"Bahçeni çok boşladın. Bir göz atmak istemez misin?",
+                              @"Çiçeklerin soluyor, bahçenle ilgilenmek istemez misin?"];
     localNotificationStrings=[[NSMutableDictionary alloc] initWithCapacity:2];
     [localNotificationStrings setObject:englishStrings forKey:@"en"];
     [localNotificationStrings setObject:turkishStrings forKey:@"tr"];
