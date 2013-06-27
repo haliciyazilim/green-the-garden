@@ -14,6 +14,6 @@ NSString* LocalizedImageName(NSString* name, NSString* extension);
 
 + (Util*) sharedInstance;
 
-- (NSArray *) getRandomStringsWithCapacity:(int)capacity;
+- (NSArray *) getRandomStringsWithCapacity:(int)capacity isLoading:(BOOL)isLoading;
 
 @end

@@ -21,6 +21,7 @@ static Util* sharedInstance = nil;
 @implementation Util
 {
     NSMutableDictionary* loadingStrings;
+    NSMutableDictionary* localNotificationStrings;
 }
 
 + (Util*) sharedInstance {
@@ -60,11 +61,24 @@ static Util* sharedInstance = nil;
     
 }
 
-- (NSArray *) getRandomStringsWithCapacity:(int)capacity {
+-(void)generateLocalNotificationStrings{
+    NSArray* englishStrings=@[@"How are you Baby?",@" ",@" "];
+    NSArray* turkishStrings=@[@"Ne zamandır girmiyormuşsun bizim uygulamaya; GİR",@" ",@" "];
+    localNotificationStrings=[[NSMutableDictionary alloc] initWithCapacity:2];
+    [localNotificationStrings setObject:englishStrings forKey:@"en"];
+    [localNotificationStrings setObject:turkishStrings forKey:@"tr"];
+}
+
+- (NSArray *) getRandomStringsWithCapacity:(int)capacity andIsLoading:(BOOL)isLoading{
     
     NSString* suffix = NSLocalizedString(@"IMAGE_FILENAME_SUFFIX", nil);
-    
-    NSArray* allStrings = [loadingStrings objectForKey:suffix];
+    NSArray* allStrings;
+    if (isLoading) {
+        allStrings = [loadingStrings objectForKey:suffix];
+    } else {
+        allStrings = [loadingStrings objectForKey:suffix];
+    }
+
     
     NSMutableArray* indexes = [self get:capacity randomIndexesWithCapacity:[allStrings count]];
     

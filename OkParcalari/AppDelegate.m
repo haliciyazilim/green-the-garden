@@ -179,9 +179,10 @@ void uncaughtExceptionHandler(NSException *exception) {
     
     int week=3600*24*7;
     UILocalNotification* localNotificationWeek= [[UILocalNotification alloc]init];
+    NSArray * notificationString=[[Util sharedInstance] getRandomStringsWithCapacity:3 isLoading:NO];
     if(localNotificationWeek){
         localNotificationWeek.fireDate=[NSDate dateWithTimeIntervalSinceNow:week];
-        localNotificationWeek.alertBody=@"Duydum ki, bizim uygulamaya 1 haftadır bakmıyoruşsun. BAK!";
+        localNotificationWeek.alertBody=[notificationString objectAtIndex:0];
         localNotificationWeek.timeZone=[NSTimeZone defaultTimeZone];
         localNotificationWeek.alertAction=@"Start App";
         localNotificationWeek.hasAction=YES;
@@ -191,7 +192,7 @@ void uncaughtExceptionHandler(NSException *exception) {
     UILocalNotification* localNotificationMonth= [[UILocalNotification alloc]init];
     if(localNotificationMonth){
         localNotificationMonth.fireDate=[NSDate dateWithTimeIntervalSinceNow:week*4];
-        localNotificationMonth.alertBody=@"Duydum ki, bizim uygulamaya 1 aydır bakmıyoruşsun. BAK!";
+        localNotificationMonth.alertBody=[notificationString objectAtIndex:1];;
         localNotificationMonth.timeZone=[NSTimeZone defaultTimeZone];
         localNotificationMonth.alertAction=@"Start App";
         localNotificationMonth.hasAction=YES;
@@ -201,7 +202,7 @@ void uncaughtExceptionHandler(NSException *exception) {
     UILocalNotification* localNotification3Months= [[UILocalNotification alloc]init];
     if(localNotification3Months){
         localNotification3Months.fireDate=[NSDate dateWithTimeIntervalSinceNow:week*12];
-        localNotification3Months.alertBody=@"Duydum ki, bizim uygulamaya 3 aydır bakmıyoruşsun. BAK!";
+        localNotification3Months.alertBody=[notificationString objectAtIndex:2];
         localNotification3Months.timeZone=[NSTimeZone defaultTimeZone];
         localNotification3Months.alertAction=@"Start App";
         localNotification3Months.hasAction=YES;

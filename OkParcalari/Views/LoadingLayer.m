@@ -94,7 +94,7 @@ static LoadingLayer* lastInstance = nil;
     [[[CCDirector sharedDirector] view] addSubview:loadingBarHolder];
     [[[CCDirector sharedDirector] view] addSubview:loadingString];
     
-    randomStrings = [[Util sharedInstance] getRandomStringsWithCapacity:5];
+    randomStrings = [[Util sharedInstance] getRandomStringsWithCapacity:5 isLoading:YES];
     
 }
 - (void) updateLoadingBarWithPercentage:(NSNumber*)perc {
